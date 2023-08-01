@@ -16,6 +16,7 @@ const {
 router.post("/img-upload", upload, sendUploadedFileUrl);
 
 router.get("/articles", getArticles);
+// router.get("/articles", getArticles);
 
 router.get("/article/:id", findOneArticle);
 
