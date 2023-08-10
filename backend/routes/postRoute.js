@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const {
-  upload,
-  sendUploadedFileUrl,
+  // upload,
+  // sendUploadedFileUrl,
   addArticle,
   deleteArticle,
   findOneArticle,
@@ -13,7 +13,7 @@ const {
 
 // IMAGE UPLOAD
 
-router.post("/img-upload", upload, sendUploadedFileUrl);
+// router.post("/img-upload", upload, sendUploadedFileUrl);
 
 router.get("/articles", getArticles);
 // router.get("/articles", getArticles);

@@ -1,5 +1,7 @@
-import React from "react";
-
+// import { useState } from "react";
+"use client";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
@@ -19,14 +21,19 @@ import RelatedImage from "../../../../public/Assets/Images/RelatedImage.svg";
 import ArticlePoster from "../../../../public/Assets/Images/ArticlePoster.svg";
 import Author from "../../../../public/Assets/Images/Author.svg";
 
-function ArticlePage() {
+async function ArticlePage() {
+  const response = await axios.get("http://localhost:5000/api/article/1");
+  // console.log(response.data);
+  const data = response.data;
   return (
     <section className="h-full bg-black">
       <div className="flex w-11/12 mx-auto gap-16">
         <div className="basis-[60%] mt-[3%]">
-          <h1 className="poppins-bold text-xl text-white">29, March 2023</h1>
+          <h1 className="poppins-semibold text-lg text-white">
+            {data.createdAt}
+          </h1>
 
-          <p className="poppins-bold text-7xl mt-[2%] text-white">
+          <p className="poppins-bold text-4xl mt-[2%] text-white">
             The Five Most Critical Financial Pitfalls to Avoid
           </p>
 
@@ -41,7 +48,7 @@ function ArticlePage() {
             />
           </div>
 
-          <p className="mt-[2%] poppins-regular text-2xl text-white">
+          <p className="mt-[2%] poppins-regular text-lg text-white">
             As a student, it’s easy to fall into financial traps that can ruin
             your long-term financial goals. Right from tuition fees,
             accommodation, textbooks, entertainment, traveling, and social life
@@ -49,10 +56,16 @@ function ArticlePage() {
             biggest financial traps. These tips will help you avoid the most
             significant financial pitfalls students face.
           </p>
-          <Image src={ArticleImage} className="my-[2%]" />
+          <Image
+            src={data.poster}
+            width={500}
+            height={500}
+            className="my-[2%]"
+          />
 
           <p className="poppins-regular mt-[1%] text-white">
-            <span className="font-black">Overspending:</span> Overspending can
+            {data.content}
+            {/* <span className="font-black">Overspending:</span> Overspending can
             be a major problem for college students, especially those who are
             living on a limited budget. To avoid overspending, it’s important to
             set a budget and stick to it. This means tracking your expenses,
@@ -97,14 +110,17 @@ function ArticlePage() {
             is essential to avoid huge losses. Of course Crypto market itself is
             more volatile Fake ICOs, Ponzi schemes, and fake exchanges. Do your
             own research and invest your money.
+          */}
           </p>
 
-          <div className="p-12 flex ">
-            <div className="basis-[40%]">
+          <div className="p-12 flex justify-center items-start gap-2">
+            <div className="basis-[40%] flex justify-center items-center">
               <Image src={Author} />
             </div>
             <div className="mt-[3%] basis-[50%]">
-              <h1 className="poppins-bold text-white">Ahmed Mustafa N</h1>
+              <h1 className="poppins-bold text-white text-justify">
+                Ahmed Mustafa N
+              </h1>
               <p className="text-white">
                 B.Tech AI&DS CIT 25' graduate, AI enthusiast, and Web Dev
                 learner. Content Writer at Chennai Institute of Technology,
@@ -116,7 +132,12 @@ function ArticlePage() {
         </div>
         <div className="basis-[40%] ">
           <div className="flex justify-center">
-            <Image src={ArticlePoster} className="p-10" />
+            <Image
+              src={data.cover_img}
+              width={500}
+              height={500}
+              className="p-10"
+            />
           </div>
           <div className="flex justify-center items-center">
             <button className="btn border rounded-full btn-sm mx-[1%] text-white">
@@ -137,7 +158,9 @@ function ArticlePage() {
               <div className="flex gap-5 p-2">
                 <div className="basis-[70%] mt-[3%] h-[16vh] flex flex-col justify-between p-1">
                   <div>
-                    <p className="text-white">A Guide To Garner Your Galaxy of Thoughts</p>
+                    <p className="text-white text-sm">
+                      A Guide To Garner Your Galaxy of Thoughts
+                    </p>
                   </div>
                   <div className="flex justify-between">
                     <p className="text-white">29, March 2023</p>
@@ -153,7 +176,9 @@ function ArticlePage() {
               <div className="flex gap-5 p-2">
                 <div className="basis-[70%] mt-[3%] h-[16vh] flex flex-col justify-between p-1">
                   <div>
-                    <p className="text-white">A Guide To Garner Your Galaxy of Thoughts</p>
+                    <p className="text-white">
+                      A Guide To Garner Your Galaxy of Thoughts
+                    </p>
                   </div>
                   <div className="flex justify-between">
                     <p className="text-white">29, March 2023</p>
@@ -169,7 +194,9 @@ function ArticlePage() {
               <div className="flex gap-5 p-2">
                 <div className="basis-[70%] mt-[3%] h-[16vh] flex flex-col justify-between p-1">
                   <div>
-                    <p className="text-white">A Guide To Garner Your Galaxy of Thoughts</p>
+                    <p className="text-white">
+                      A Guide To Garner Your Galaxy of Thoughts
+                    </p>
                   </div>
                   <div className="flex justify-between">
                     <p className="text-white">29, March 2023</p>
@@ -189,14 +216,23 @@ function ArticlePage() {
           <div className="px-20">
             <h1 className="poppins-bold text-3xl mt-[3%] text-white">Share</h1>
             <div className="flex mt-[3%]">
-
-              <FontAwesomeIcon icon={faFacebook} size="2x"  className="px-[2%]"/>
-              <FontAwesomeIcon icon={faTwitter} size="2x"  className="px-[2%]"/>
-              <FontAwesomeIcon icon={faLinkedin} size="2x"  className="px-[2%]"/>
-              <FontAwesomeIcon icon={faWhatsapp} size="2x"  className="px-[2%]"/>
-
+              <FontAwesomeIcon
+                icon={faFacebook}
+                size="2x"
+                className="px-[2%]"
+              />
+              <FontAwesomeIcon icon={faTwitter} size="2x" className="px-[2%]" />
+              <FontAwesomeIcon
+                icon={faLinkedin}
+                size="2x"
+                className="px-[2%]"
+              />
+              <FontAwesomeIcon
+                icon={faWhatsapp}
+                size="2x"
+                className="px-[2%]"
+              />
             </div>
-
           </div>
         </div>
       </div>
