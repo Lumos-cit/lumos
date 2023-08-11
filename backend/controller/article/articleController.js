@@ -95,7 +95,7 @@ const findOneArticle = async (req, res) => {
   try {
     const article = await Article.findOne({
       where: {
-        id: req.params.id,
+        article_id: Number(req.params.id),
       },
     });
     if (article) res.send(article);
