@@ -63,6 +63,7 @@ const getArticles = async (req, res) => {
       where: match,
       offset: offset,
       limit: limit,
+      order: [["createdAt", "DESC"]],
     });
 
     const meta = {

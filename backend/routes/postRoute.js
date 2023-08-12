@@ -9,10 +9,6 @@ const {
   updateArticle,
 } = require("../controller/article/articleController");
 
-// IMAGE UPLOAD
-
-// router.post("/img-upload", upload, sendUploadedFileUrl);
-
 router.get("/articles", getArticles);
 
 router.get("/article/:id", findOneArticle);
@@ -24,5 +20,24 @@ router.post("/article", addArticle);
 router.put("/article", updateArticle);
 
 router.delete("/article", deleteArticle);
+
+//
+const {
+  addNews,
+  deleteNews,
+  findOneNews,
+  getNews,
+  updateNews,
+} = require("../controller/article/newsController");
+
+router.get("/news", getNews);
+
+router.get("/news/:id", findOneNews);
+
+router.post("/news", addNews);
+
+router.put("/news", updateNews);
+
+router.delete("/news", deleteNews);
 
 module.exports = router;
