@@ -11,7 +11,7 @@ const addArticle = async (req, res) => {
     cover_img: data.cover_img,
     img: data.img,
     content: data.content,
-    isCareer: data.isCareer,
+    tag: data.tag,
     author_id: data.author_id,
   };
 
@@ -32,7 +32,7 @@ const updateArticle = async (req, res) => {
     cover_img: data.cover_img,
     img: data.img,
     content: data.content,
-    isCareer: data.isCareer,
+    tag: data.tag,
     author_id: data.author_id,
   };
 
@@ -51,13 +51,9 @@ const getArticles = async (req, res) => {
   const match = {};
   const sort = {};
 
-  // if (req.query.bestSeller) {
-  //   match.bestSeller = req.query.bestSeller === "true";
-  // }
-
-  // if (req.query.Type) {
-  //   match.Type = req.query.Type;
-  // }
+  if (req.query.tag) {
+    match.tag = req.query.tag;
+  }
 
   try {
     const offset = parseInt(req.query.offset) || 0;

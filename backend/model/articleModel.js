@@ -24,8 +24,8 @@ const Article = sequelize.define("article", {
   content: {
     type: DataTypes.TEXT("long"),
   },
-  isCareer: {
-    type: DataTypes.BOOLEAN,
+  tag: {
+    type: DataTypes.STRING,
   },
   author_id: {
     type: Sequelize.INTEGER,
