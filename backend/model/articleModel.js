@@ -12,29 +12,29 @@ const Article = sequelize.define("article", {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  content: {
-    type: DataTypes.TEXT('long'),
+  description: {
+    type: DataTypes.TEXT("long"),
   },
   cover_img: {
     type: DataTypes.STRING,
   },
-  poster: {
+  img: {
     type: DataTypes.STRING,
   },
-  isNews: {
+  content: {
+    type: DataTypes.TEXT("long"),
+  },
+  isCareer: {
     type: DataTypes.BOOLEAN,
   },
-  isEvent: {
-    type: DataTypes.BOOLEAN,
-  },
-  isFeatured: {
-    type: DataTypes.BOOLEAN,
+  author_id: {
+    type: Sequelize.INTEGER,
   },
 });
 
 sequelize
-  // .sync({ alter: true })
-  .sync()
+  .sync({ alter: true })
+  // .sync()
   .then(() => {
     console.log("Article table created successfully!");
   })

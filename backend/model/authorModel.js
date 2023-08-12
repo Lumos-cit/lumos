@@ -1,6 +1,6 @@
 const { DataTypes, Sequelize } = require("sequelize");
 const sequelize = require("../config/db");
-const User = require("./userModel")
+const Article = require("./articleModel");
 
 const Author = sequelize.define(
   "author",
@@ -28,11 +28,9 @@ const Author = sequelize.define(
   { timestamps: false }
 );
 
-Author.belongsTo(User);
-
 sequelize
-  // .sync({ alter: true })
-  .sync()
+  .sync({ alter: true })
+  // .sync()
   .then(() => {
     console.log("Author table created successfully!");
   })
