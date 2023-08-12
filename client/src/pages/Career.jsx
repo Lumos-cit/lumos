@@ -27,7 +27,7 @@ function Career() {
     "studentHQ",
   ];
   const [articles, setArticles] = useState([]);
-  let tag = "career";
+  let tag = "studentHq";
 
   useEffect(() => {
     fetchArticles();
