@@ -1,8 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const {
-  // upload,
-  // sendUploadedFileUrl,
   addArticle,
   deleteArticle,
   findOneArticle,
@@ -16,14 +14,15 @@ const {
 // router.post("/img-upload", upload, sendUploadedFileUrl);
 
 router.get("/articles", getArticles);
-// router.get("/articles", getArticles);
 
 router.get("/article/:id", findOneArticle);
 
 router.get("/article/search", search);
 
 router.post("/article", addArticle);
+
 router.put("/article", updateArticle);
+
 router.delete("/article", deleteArticle);
 
 module.exports = router;

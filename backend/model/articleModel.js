@@ -33,8 +33,8 @@ const Article = sequelize.define("article", {
 });
 
 sequelize
-  .sync({ alter: true })
-  // .sync()
+  // .sync({ alter: true })
+  .sync()
   .then(() => {
     console.log("Article table created successfully!");
   })

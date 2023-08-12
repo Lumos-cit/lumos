@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const authRouter = require("./routes/authRoute");
 const postRouter = require("./routes/postRoute");
+const authorRouter = require("./routes/authorRoute");
 require("dotenv").config();
 require("./config/db");
 
@@ -15,6 +16,7 @@ app.use("/Uploads/Images", express.static("./Uploads/Images"));
 
 //
 app.use("/auth", authRouter);
+app.use("/author", authorRouter);
 app.use("/api", postRouter);
 
 app.get("/", (req, res) => {

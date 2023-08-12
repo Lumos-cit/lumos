@@ -29,8 +29,8 @@ const Author = sequelize.define(
 );
 
 sequelize
-  .sync({ alter: true })
-  // .sync()
+  // .sync({ alter: true })
+  .sync()
   .then(() => {
     console.log("Author table created successfully!");
   })
