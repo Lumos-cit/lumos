@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 
@@ -13,7 +12,7 @@ function NewsFlex({ images, heads, contents, dates }) {
             key={index}
           >
             <div className="basis-[20%]">
-              <Image src={image} />
+              <img src={image} />
             </div>
             <div className="basis-[60%]">
               <h1 className="poppins-bold my-[2%] text-2xl text-white">{heads[index]}</h1>
