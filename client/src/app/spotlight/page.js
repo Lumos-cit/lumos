@@ -1,5 +1,6 @@
 import React from 'react'
 import SectionHead from '../Components/SectionHead'
+import SpotlightFlex from '../Components/SpotlightFlex';
 
 function page() {
   const head = "SPOTLIGHT";
@@ -10,6 +11,7 @@ function page() {
     <div>
       <SectionHead head={head} body={body}/>
       <div className='bg-slate-500 h-screen'>
+        <SpotlightFlex />
 
       </div>
     </div>
