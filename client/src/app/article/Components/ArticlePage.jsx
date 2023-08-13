@@ -22,15 +22,20 @@ import ArticlePoster from "../../../../public/Assets/Images/ArticlePoster.svg";
 import Author from "../../../../public/Assets/Images/Author.svg";
 
 async function ArticlePage() {
-  const response = await axios.get("http://localhost:5000/api/article/1");
-  // console.log(response.data);
-  const data = response.data;
+  // const [data, setData] = useState();
+  // useEffect(() => {
+  //   axios.get("http://localhost:3030/api/article/1").then((res) => {
+  //     console.log(res.data);
+  //     setData(res.data);
+  //   });
+  // }, []);
+
   return (
     <section className="h-full bg-black">
       <div className="flex w-11/12 mx-auto gap-16">
         <div className="basis-[60%] mt-[3%]">
           <h1 className="poppins-semibold text-lg text-white">
-            {data.createdAt}
+            {/* {data.updatedAt} */}
           </h1>
 
           <p className="poppins-bold text-4xl mt-[2%] text-white">
@@ -57,14 +62,14 @@ async function ArticlePage() {
             significant financial pitfalls students face.
           </p>
           <Image
-            src={data.poster}
             width={500}
             height={500}
             className="my-[2%]"
+            alt=""
+            src={ArticleImage}
           />
 
           <p className="poppins-regular mt-[1%] text-white">
-            {data.content}
             {/* <span className="font-black">Overspending:</span> Overspending can
             be a major problem for college students, especially those who are
             living on a limited budget. To avoid overspending, it’s important to
@@ -115,7 +120,7 @@ async function ArticlePage() {
 
           <div className="p-12 flex justify-center items-start gap-2">
             <div className="basis-[40%] flex justify-center items-center">
-              <Image src={Author} />
+              <Image src={ArticleImage} alt="" />
             </div>
             <div className="mt-[3%] basis-[50%]">
               <h1 className="poppins-bold text-white text-justify">
@@ -133,10 +138,11 @@ async function ArticlePage() {
         <div className="basis-[40%] ">
           <div className="flex justify-center">
             <Image
-              src={data.cover_img}
               width={500}
               height={500}
               className="p-10"
+              alt=""
+              src={ArticleImage}
             />
           </div>
           <div className="flex justify-center items-center">
@@ -168,7 +174,7 @@ async function ArticlePage() {
                   </div>
                 </div>
                 <div className="flex justify-center items-center">
-                  <Image src={RelatedImage} />
+                  <Image src={ArticleImage} alt="" />
                 </div>
               </div>
             </div>
@@ -186,7 +192,7 @@ async function ArticlePage() {
                   </div>
                 </div>
                 <div className="flex justify-center items-center">
-                  <Image src={RelatedImage} />
+                  <Image src={ArticleImage} alt="" />
                 </div>
               </div>
             </div>
@@ -204,7 +210,7 @@ async function ArticlePage() {
                   </div>
                 </div>
                 <div className="flex justify-center items-center">
-                  <Image src={RelatedImage} />
+                  <Image src={ArticleImage} alt="" />
                 </div>
               </div>
             </div>

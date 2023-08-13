@@ -13,7 +13,7 @@ const Article = sequelize.define("article", {
     allowNull: false,
   },
   content: {
-    type: DataTypes.TEXT,
+    type: DataTypes.TEXT('long'),
   },
   cover_img: {
     type: DataTypes.STRING,
