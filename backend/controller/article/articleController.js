@@ -7,12 +7,12 @@ const addArticle = async (req, res) => {
   const data = req.body;
   let info = {
     title: data.title,
-    content: data.content,
+    description: data.description,
     cover_img: data.cover_img,
-    poster: data.poster,
-    isNews: data.isNews,
-    isEvent: data.isEvent,
-    isFeatured: data.isFeatured,
+    img: data.img,
+    content: data.content,
+    tag: data.tag,
+    author_id: data.author_id,
   };
 
   try {
@@ -28,17 +28,17 @@ const updateArticle = async (req, res) => {
   const data = req.body;
   let info = {
     title: data.title,
-    content: data.content,
+    description: data.description,
     cover_img: data.cover_img,
-    poster: data.poster,
-    isNews: data.isNews,
-    isEvent: data.isEvent,
-    isFeatured: data.isFeatured,
+    img: data.img,
+    content: data.content,
+    tag: data.tag,
+    author_id: data.author_id,
   };
 
   try {
     const article = await Article.update(info, {
-      where: { id: req.params.id },
+      where: { article_id : req.params.id },
     });
     res.send(article);
   } catch (error) {
@@ -51,13 +51,9 @@ const getArticles = async (req, res) => {
   const match = {};
   const sort = {};
 
-  // if (req.query.bestSeller) {
-  //   match.bestSeller = req.query.bestSeller === "true";
-  // }
-
-  // if (req.query.Type) {
-  //   match.Type = req.query.Type;
-  // }
+  if (req.query.tag) {
+    match.tag = req.query.tag;
+  }
 
   try {
     const offset = parseInt(req.query.offset) || 0;
@@ -67,6 +63,7 @@ const getArticles = async (req, res) => {
       where: match,
       offset: offset,
       limit: limit,
+      order: [["createdAt", "DESC"]],
     });
 
     const meta = {
@@ -102,14 +99,14 @@ const findOneArticle = async (req, res) => {
     else res.status(400).json("Not found");
   } catch (error) {
     console.log(error);
-    res.status(400).json("Failed get the product");
+    res.status(400).json("Failed get the article");
   }
 };
 
 const deleteArticle = async (req, res) => {
   Article.destroy({
     where: {
-      id: req.params.id,
+      article_id: req.params.id,
     },
   })
     .then(() => {
