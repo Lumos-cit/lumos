@@ -3,18 +3,18 @@ import wand from "/Assets/Images/wand.svg";
 function News() {
   return (
     <div className="bg-white ">
-       <div className="relative  h-[65vh] hidden lg:block pt-[5%]">
+      <div className="relative h-[65vh] hidden md:block pt-[5%]">
         <img
           src={wand}
-          className="absolute w-[500px] h-[500px] right-40"
+          className="absolute w-[300px] h-[300px] right-40"
           style={{ zIndex: 1 }}
         />
-        <div className="bg-[#FFC600] h-[57vh] w-5/6 mx-auto flex border rounded-3xl">
+        <div className="bg-[#FFC600] h-[40vh] w-5/6 mx-auto flex border rounded-3xl">
           <div className="basis-3/4">
-            <h1 className=" text-black text-4xl lg:text-[155px] ibm-bold tracking-wide leading-none ml-16 mt-5 ">
+            <h1 className=" text-black text-4xl lg:text-[80px] ibm-bold tracking-wide leading-none ml-10 mt-5 ">
               Stick With Us
             </h1>
-            <h1 className="ibm-bold text-white text-[80px] ml-16">
+            <h1 className="ibm-bold text-white md:text-[40px] ml-10">
               For the latest
             </h1>
           </div>
@@ -22,20 +22,17 @@ function News() {
       </div>
 
       <div className=" h-[35vh] block md:hidden">
-       
         <div className="bg-[#FFC600] w-5/6 mx-auto flex border rounded-3xl h-[25vh] relative ">
-        <img
-          src={wand}
-          className="absolute w-[200px] h-[200px] right-0 top-0"
-          style={{ zIndex: 1 }}
-        />
-          <div className="basis-3/4 mt-[20%]">
-            <h1 className=" text-black text-2xl  ibm-bold tracking-wide leading-none ">
+          <img
+            src={wand}
+            className="absolute w-[150px] h-[150px] right-0 top-0"
+            style={{ zIndex: 1 }}
+          />
+          <div className="basis-3/4 mt-2 p-3">
+            <h1 className=" text-black text-2xl ibm-bold tracking-wide leading-none ">
               Stick With Us
             </h1>
-            <h1 className="ibm-bold text-white text-2xl ">
-              For the latest
-            </h1>
+            <h1 className="ibm-bold text-white text-2xl ">For the latest</h1>
           </div>
         </div>
       </div>
@@ -79,7 +76,7 @@ function News() {
                 <p className="px-[10%] py-[10%] ibm-bold text-2xl text-black">
                   23/11/23
                 </p>
-                <p className="px-[10%] ibm-bold text-3xl text-white">
+                <p className="px-[10%] ibm-bold text-2xl text-white">
                   Day scholors were asked to vacate the hostel and join the
                   hostel again for residential training
                 </p>
@@ -113,11 +110,11 @@ function News() {
 
       <div className="block md:hidden pb-10">
         <div className="flex flex-col justify-center items-center h-[100vh] px-[5%] py-[2%] gap-3">
-          <div className="basis-[50%] bg-[#FF7575] h-[40%] w-full relative border rounded-2xl" >
+          <div className="basis-[50%] bg-[#FF7575] h-[40%] w-full relative border rounded-2xl">
             <p className="px-[5%] py-[5%] ibm-bold text-xl text-black ">
               23/11/23
             </p>
-            <p className="px-[5%] ibm-bold text-xl text-white">
+            <p className="px-[5%] ibm-bold text-lg text-white">
               Day scholors were asked to vacate the hostel and join the hostel
               again for residential training
             </p>
@@ -130,7 +127,7 @@ function News() {
               <p className="px-[1%] py-[1%] ibm-bold text-sm text-black">
                 23/11/23
               </p>
-              <p className="px-[1%] ibm-bold text-sm text-white">
+              <p className="ibm-bold text-[11px] px-1 text-white">
                 Day scholors were asked to vacate the hostel and join the hostel
                 again for residential training
               </p>
@@ -140,10 +137,10 @@ function News() {
             </div>
 
             <div className="bg-[#EDFF7D] h-[30vh] w-1/2 border rounded-2xl relative">
-              <p className="px-[1%] py-[1%] ibm-bold text-sm text-black">
+              <p className="px-1 py-[1%] ibm-bold text-sm text-black">
                 23/11/23
               </p>
-              <p className="px-[1%] ibm-bold text-sm text-white">
+              <p className="px-[1%] ibm-bold text-[11px] text-white">
                 Day scholors were asked to vacate the hostel and join the hostel
                 again for residential training
               </p>
@@ -160,8 +157,6 @@ function News() {
           </div>
         </div>
       </div>
-
-     
     </div>
   );
 }

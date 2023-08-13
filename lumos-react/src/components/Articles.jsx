@@ -6,17 +6,19 @@ import poster from "/Assets/Images/poster.svg";
 function Articles() {
   return (
     <div className="relative bg-white h-full pt-[10%] lg:pt-2">
-      <img
+      {/* <img
         src={ink}
         className="absolute right-[1%] top-[4%] lg:top-[9%] w-[40%] lg:w-[50%] h-auto "
-      />
+      /> */}
       <div className="bg-white h-[20vh] lg:h-[40vh] flex w-4/5 mx-auto ">
         <div className="basis-[60%] w-5/6 h-1/2">
-          <h1 className="text-4xl lg:text-[128px] text-black ibm-bold leading-none">
+          <h1 className="text-4xl lg:text-[108px] text-black ibm-bold leading-none">
             Not Just ARTICLES
           </h1>
         </div>
-        <div className="basis-[40%]"></div>
+        <div className="basis-[40%]">
+          <img src={ink} className="w-[100%] lg:w-[100%] h-auto " />
+        </div>
       </div>
 
       <h1 className="text-lg lg:text-[120px] ibm-bold text-[#FFE68F] tracking-widest leading-none text-center">
@@ -69,7 +71,7 @@ function Articles() {
         <img src={poster} className="w-[140px]   lg:w-[184px] h-[290px]" />
       </div>
       <div className="flex justify-center">
-        <button className="btn bg-custom-1 btn-wide mx-auto text-black hover:text-white">
+        <button className="btn bg-custom-1 btn-wide mx-auto text-slate-400 hover:text-white">
           DISCOVER MORE
         </button>
       </div>
