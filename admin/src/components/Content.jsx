@@ -6,7 +6,7 @@ function Content() {
   const dispatch = useDispatch();
   const type = useSelector((state) => state.product.contentType);
 
-  const contentTypes = ["Currency", "Best Seller", "Deal of the day"];
+  const contentTypes = ["Articles", "News"];
   return (
     <div className="flex flex-col pl-10 gap-5 text-black mt-[5%]">
       <h1 className="font-bold text-xl">Content</h1>

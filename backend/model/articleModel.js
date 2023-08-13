@@ -18,9 +18,6 @@ const Article = sequelize.define("article", {
   cover_img: {
     type: DataTypes.STRING,
   },
-  img: {
-    type: DataTypes.STRING,
-  },
   content: {
     type: DataTypes.TEXT("long"),
   },
