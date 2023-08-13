@@ -17,8 +17,8 @@ const News = sequelize.define("news", {
 });
 
 sequelize
-  .sync({ alter: true })
-  //   .sync()
+  // .sync({ alter: true })
+    .sync()
   .then(() => {
     console.log("News table created successfully!");
   })
