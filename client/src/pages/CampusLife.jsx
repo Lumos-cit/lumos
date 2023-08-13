@@ -19,8 +19,8 @@ function CampusLife() {
     const Image2 = [Career4, Career5, Career6];
     const Image3 = [Career7, Career8, Career9];
     const Text1 = [
-      "The Five Most Critical Financial Pitfalls to Avoid",
-      "The Five Most Critical Financial Pitfalls to Avoid",
+      "The 5 Most Critical Financial Pitfalls to Avoid",
+      "The 5 Most Critical Financial Pitfalls to Avoid",
       "The Five Most Critical Financial Pitfalls to Avoid",
     ];
     const Button1 = ["studentHQ", "studentHQ", "studentHQ"];
