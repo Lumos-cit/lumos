@@ -38,7 +38,7 @@ const updateArticle = async (req, res) => {
 
   try {
     const article = await Article.update(info, {
-      where: { article_id : req.params.id },
+      where: { article_id: req.params.id },
     });
     res.send(article);
   } catch (error) {
@@ -110,9 +110,11 @@ const deleteArticle = async (req, res) => {
     },
   })
     .then(() => {
+      res.send("Deleted Sucessfully");
       console.log("Successfully deleted record.");
     })
     .catch((error) => {
+      res.status(400).json("Failed to delete");
       console.error("Failed to delete record : ", error);
     });
 };

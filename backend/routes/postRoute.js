@@ -19,7 +19,7 @@ router.post("/article", addArticle);
 
 router.put("/article/:id", updateArticle);
 
-router.delete("/article", deleteArticle);
+router.delete("/article/:id", deleteArticle);
 
 //
 const {

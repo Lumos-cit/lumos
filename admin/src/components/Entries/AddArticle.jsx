@@ -3,7 +3,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import Editor from "../Editor/Editor";
 
-function AddProduct({ update }) {
+function AddArticle({ update }) {
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
   const [description, setDescription] = useState("");
@@ -66,7 +66,7 @@ function AddProduct({ update }) {
         })
         .catch((err) => console.log(err));
     } else {
-      console.log("NEW entry");
+      console.log("NEW entry ARTICLEEE");
       setTitle("");
       setDescription("");
       setImage("");
@@ -203,4 +203,4 @@ function AddProduct({ update }) {
   );
 }
 
-export default AddProduct;
+export default AddArticle;
