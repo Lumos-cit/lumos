@@ -9,7 +9,7 @@ function JoinUs() {
       <JoinusToday />
       <Pic />
       <Family />
-      <h1 className="ibm-bold text-[#FFE500] text-2xl lg:text-[350px]  text-end leading-none tracking-[55px] ">
+      <h1 className="ibm-bold text-[#FFE500] text-2xl lg:text-[300px]  text-end leading-none tracking-[40px] ">
         FAMILY
       </h1>
       <div className="flex justify-center p-3">

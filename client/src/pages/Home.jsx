@@ -8,14 +8,14 @@ import SpotlightMain from "../components/SpotlightMain";
 
 function Home() {
   return (
-    <>
+    <div className="overflow-hidden">
       <MainHead />
       <MostRead />
       <News />
       <SpotlightMain />
       <Articles />
       <JoinUs />
-    </>
+    </div>
   );
 }
 
