@@ -31,7 +31,7 @@ function Footer() {
             </div>
           </div>
         </div>
-        <hr className="border border-black" />
+        {/* <hr className="border border-black" /> */}
         <h1 className="text-center bg-[#DEDB44] text-black">
           LUMOS OFFICIAL 2023
         </h1>

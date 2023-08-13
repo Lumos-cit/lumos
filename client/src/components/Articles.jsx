@@ -27,7 +27,7 @@ function Articles() {
 
       <div className="flex justify-center lg:justify-between mt-[10%] lg:mt-10 w-5/6 mx-auto flex-wrap">
         <div>
-          <button className="btn bg-custom-1  border-[#F8F301] border-2 text-[#000] btn-wide lg:btn-md mx-auto my-[2%] hover:text-white">
+          <button className="btn btn-neutral border-[#F8F301] border-2 text-[#F8F301] btn-wide lg:btn-md mx-auto my-[2%]">
             XPLORE
           </button>
         </div>

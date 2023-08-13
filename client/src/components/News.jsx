@@ -50,11 +50,11 @@ function News() {
                 <p className="px-[10%] py-[10%] ibm-bold text-2xl text-black">
                   23/11/23
                 </p>
-                <p className="px-[10%] ibm-bold text-3xl text-white">
+                <p className="px-[10%] ibm-bold text-xl text-white">
                   Day scholors were asked to vacate the hostel and join the
                   hostel again for residential training
                 </p>
-                <p className="absolute bottom-1 left-12 text-xl ibm-italic text-white">
+                <p className="absolute bottom-[1rem] left-12 text-xl ibm-italic text-white">
                   Erwin Smith, survey corps
                 </p>
               </div>
@@ -62,11 +62,11 @@ function News() {
                 <p className="px-[10%] py-[10%] ibm-bold text-2xl text-black">
                   23/11/23
                 </p>
-                <p className="px-[10%] ibm-bold text-3xl text-white">
+                <p className="px-[10%] ibm-bold text-xl text-white">
                   Day scholors were asked to vacate the hostel and join the
                   hostel again for residential training
                 </p>
-                <p className="absolute bottom-1 left-12 text-xl ibm-italic text-white">
+                <p className="absolute bottom-[1rem] left-12 text-xl ibm-italic text-white">
                   Erwin Smith, survey corps
                 </p>
               </div>
@@ -76,7 +76,7 @@ function News() {
                 <p className="px-[10%] py-[10%] ibm-bold text-2xl text-black">
                   23/11/23
                 </p>
-                <p className="px-[10%] ibm-bold text-2xl text-white">
+                <p className="px-[10%] ibm-bold text-xl text-white">
                   Day scholors were asked to vacate the hostel and join the
                   hostel again for residential training
                 </p>
@@ -88,11 +88,11 @@ function News() {
                 <p className="px-[10%] py-[10%] ibm-bold text-2xl text-black">
                   23/11/23
                 </p>
-                <p className="px-[10%] ibm-bold text-3xl text-white">
+                <p className="px-[10%] ibm-bold text-xl text-white">
                   Day scholors were asked to vacate the hostel and join the
                   hostel again for residential training
                 </p>
-                <p className="absolute bottom-1 left-12 text-xl ibm-italic text-white">
+                <p className="absolute bottom-[1rem] left-12 text-xl ibm-italic text-white">
                   Erwin Smith, survey corps
                 </p>
               </div>

@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+
 import SectionHead from "../Components/SectionHead";
 import SectionFlex from "../Components/SectionFlex";
 import Career1 from "/Assets/Images/Career1.svg";
@@ -12,6 +14,19 @@ import Career8 from "/Assets/Images/Career8.svg";
 import Career9 from "/Assets/Images/Career9.svg";
 
 function CampusLife() {
+  const [campusLife, setCampusLife] = useState([]);
+  let tag = "campusLife";
+  function fetchCampusLife() {
+    axios
+      .get(import.meta.env.VITE_BACKEND_URL + `/api/articles?tag=${tag}`)
+      .then((res) => {
+        console.log(res.data.data);
+        setCampusLife(res.data.data);
+      });
+  }
+  useEffect(() => {
+    fetchCampusLife();
+  }, []);
   const head = "CAMPUS LIFE";
   const body =
     "This article dives into the common money traps that many college students fall into, and offers practical advice on how to avoid them. From overspending to getting caught up in credit card offers and Crypto scams, we’ll show you how to make wise financial choices that will set you up for success during and after college.";
@@ -33,30 +48,10 @@ function CampusLife() {
   
   
     return (
-    <div>
-       <SectionHead head={head} body={body} />
+      <div>
+      <SectionHead head={head} body={body} />
       <div className="">
-        <SectionFlex
-          images={Image1}
-          texts={Text1}
-          buttons={Button1}
-          dates={Date1}
-          authors={Author1}
-        />
-        <SectionFlex
-          images={Image2}
-          texts={Text1}
-          buttons={Button1}
-          dates={Date1}
-          authors={Author1}
-        />
-        <SectionFlex
-          images={Image3}
-          texts={Text1}
-          buttons={Button1}
-          dates={Date1}
-          authors={Author1}
-        />
+        <SectionFlex images={Image1} buttons={Button1} articles={campusLife} />
       </div>
     </div>
   )
