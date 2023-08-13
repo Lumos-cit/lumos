@@ -96,7 +96,7 @@ function AddProduct({ update }) {
         <form className="p-10 relative" onSubmit={handleSubmit}>
           {/* 1 */}
           <div className="flex gap-4">
-            <div className="basis-[50%]">
+            <div className="basis-[50%] text-white">
               <label htmlFor="">
                 Title <span className="text-red-600">*</span>
               </label>
@@ -104,12 +104,12 @@ function AddProduct({ update }) {
                 type="text"
                 value={title}
                 placeholder="Type here"
-                className="input input-bordered w-full max-w-lg"
+                className="input input-bordered w-full max-w-lg text-black"
                 required={true}
                 onChange={(e) => setTitle(e.target.value)}
               />
             </div>
-            <div className="basis-[50%]">
+            <div className="basis-[50%] text-white">
               <label htmlFor="">
                 Cover Image URL <span className="text-red-600">*</span>
               </label>
@@ -117,19 +117,19 @@ function AddProduct({ update }) {
                 type="text"
                 value={image}
                 placeholder="Type here"
-                className="input input-bordered w-full max-w-lg"
+                className="input input-bordered w-full max-w-lg text-black"
                 required={true}
                 onChange={(e) => setImage(e.target.value)}
               />
             </div>
           </div>
           {/* 2 */}
-          <div className="w-full mt-[5%]">
+          <div className="w-full mt-[5%] text-white">
             <label htmlFor="">
               Description <span className="text-red-600">*</span>
             </label>
             <textarea
-              className="textarea textarea-bordered w-full h-[250px]"
+              className="textarea textarea-bordered w-full h-[250px] text-black"
               placeholder="Type Here"
               value={description}
               required={true}
@@ -137,8 +137,8 @@ function AddProduct({ update }) {
             ></textarea>
           </div>
           {/* 3 */}
-          <div className="w-full mt-[5%]">
-            <label htmlFor="">
+          <div className="w-full mt-[5%] text-black">
+            <label className="text-white" htmlFor="">
               Content <span className="text-red-600">*</span>
             </label>
             {update ? (
@@ -149,12 +149,12 @@ function AddProduct({ update }) {
           </div>
           {/* 5 */}
           <div className="flex w-full mx-auto mt-[3%] gap-10 py-10">
-            <div className="basis-[50%] ">
+            <div className="basis-[50%] text-white">
               <label htmlFor="">
                 Tag <span className="text-red-600">*</span>
               </label>
               <select
-                className="select select-bordered w-full"
+                className="select select-bordered w-full text-black"
                 value={tag}
                 onChange={(e) => {
                   setTag(e.target.value);
@@ -169,12 +169,12 @@ function AddProduct({ update }) {
                 <option value="campusLife">Campus Life</option>
               </select>
             </div>
-            <div className="basis-[50%]">
+            <div className="basis-[50%] text-white">
               <label htmlFor="">
                 Author <span className="text-red-600">*</span>
               </label>
               <select
-                className="select select-bordered w-full"
+                className="select select-bordered w-full text-black"
                 value={author}
                 onChange={(e) => {
                   setAuthor(e.target.value);
