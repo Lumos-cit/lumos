@@ -29,11 +29,11 @@ function Existing({ type, updateEntry }) {
       <table className="w-full table-auto">
         <thead>
           <tr>
-            <th className="py-2">ID</th>
-            <th className="py-2">Date</th>
-            <th className="py-2">Title</th>
-            <th className="py-2">Description</th>
-            <th className="py-2">Actions</th>
+            <th className="py-2 text-white">ID</th>
+            <th className="py-2 text-white">Date</th>
+            <th className="py-2 text-white">Title</th>
+            <th className="py-2 text-white">Description</th>
+            <th className="py-2 text-white">Actions</th>
           </tr>
         </thead>
         <tbody>
