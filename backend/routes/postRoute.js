@@ -17,7 +17,7 @@ router.get("/article/search", search);
 
 router.post("/article", addArticle);
 
-router.put("/article", updateArticle);
+router.put("/article/:id", updateArticle);
 
 router.delete("/article", deleteArticle);
 

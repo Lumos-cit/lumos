@@ -13,13 +13,12 @@ import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
+import Blocks from "editorjs-blocks-react-renderer";
 
 import axios from "axios";
 
-import ArticleImage from "/Assets/Images/ArticleImage.svg";
 import RelatedImage from "/Assets/Images/RelatedImage.svg";
 import ArticlePoster from "/Assets/Images/ArticlePoster.svg";
-import Author from "/Assets/Images/Author.svg";
 
 function ArticlePage({ data, author }) {
   return (
@@ -32,9 +31,9 @@ function ArticlePage({ data, author }) {
             {data && data.title}
           </p>
 
-          <p className="text-3xl poppins-semibold mt-[2%] text-white">
+          {/* <p className="text-3xl poppins-semibold mt-[2%] text-white">
             Mind over matter: Taking control of your mental well-being
-          </p>
+          </p> */}
           <div className="flex justify-between mt-[2%]">
             <p className=" text-white">
               By {author && author?.name} ( {author && author?.department} )
@@ -48,12 +47,41 @@ function ArticlePage({ data, author }) {
           <p className="mt-[2%] poppins-regular text-2xl text-white">
             {data && data.description}
           </p>
-          <img src={ArticleImage} className="my-[2%]" />
-
-          <p className="poppins-regular mt-[1%] text-white">
-            {data && data.content}
-          </p>
-
+          {/*  */}
+          {data && (
+            <Blocks
+              data={JSON.parse(data.content)}
+              config={{
+                embed: {
+                  className: "border-0",
+                },
+                header: {
+                  className: "font-bold",
+                },
+                image: {
+                  className: "w-full max-w-screen-md",
+                  actionsClassNames: {
+                    stretched: "w-full h-80 object-cover",
+                    withBorder: "border border-2",
+                    withBackground: "p-2",
+                  },
+                },
+                list: {
+                  className: "list-inside",
+                },
+                paragraph: {
+                  className: "text-base text-opacity-75",
+                  actionsClassNames: {
+                    alignment: "text-{alignment}", // This is a substitution placeholder: left or center.
+                  },
+                },
+                quote: {
+                  className: "py-3 px-5 italic font-serif",
+                },
+              }}
+            />
+          )}
+          {/*  */}
           <div className="p-12 flex ">
             <div className="basis-[40%]">
               <img src={author && author.profile_pic} />
@@ -68,7 +96,7 @@ function ArticlePage({ data, author }) {
         </div>
         <div className="basis-[40%] ">
           <div className="flex justify-center">
-            <img src={ArticlePoster} className="p-10" />
+            <img src={data && data.cover_img} className="p-10" />
           </div>
           <div className="flex justify-center items-center">
             <button className="btn border rounded-full btn-sm mx-[1%] text-white">

@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const productSlice = createSlice({
   name: "product",
   initialState: {
-    contentType: "Currency",
+    contentType: "Articles",
   },
   reducers: {
     changeContentType: (state, action) => {
