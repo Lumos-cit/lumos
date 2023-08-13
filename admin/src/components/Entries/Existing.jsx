@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  getAllCurrenciesAndNotes,
-  getBestSellers,
-} from "../../services/getProducts";
+import { getArticles, getNews } from "../../services/getProducts";
 import ResponsivePagination from "react-responsive-pagination";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
@@ -15,17 +12,16 @@ function Existing({ type, updateEntry }) {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    if (type == "Deal of the day") {
-    } else if (type == "Best Seller") {
-      getBestSellers(setData, setTotalPage, currentPage);
+    if (type == "Articles") {
+      getArticles(setData, setTotalPage, currentPage);
     } else {
-      getAllCurrenciesAndNotes(setData, setTotalPage, currentPage);
+      getNews(setData, setTotalPage, currentPage);
     }
   }, [type]);
 
   function pageChanging(val) {
     setCurrentPage(val);
-    getAllCurrenciesAndNotes(setData, setTotalPage, val);
+    getArticles(setData, setTotalPage, val);
   }
 
   return (
@@ -34,16 +30,21 @@ function Existing({ type, updateEntry }) {
         <thead>
           <tr>
             <th className="py-2">ID</th>
-            <th className="py-2">Name</th>
-            <th className="py-2">Image</th>
-            <th className="py-2">Price</th>
-            <th className="py-2">Type</th>
+            <th className="py-2">Date</th>
+            <th className="py-2">Title</th>
+            <th className="py-2">Description</th>
             <th className="py-2">Actions</th>
           </tr>
         </thead>
         <tbody>
           {data.map((item, i) => (
-            <Selection key={i} item={item} updateEntry={updateEntry} />
+            <Selection
+              key={i}
+              item={item}
+              updateEntry={updateEntry}
+              index={i + 1}
+              currentPage={currentPage}
+            />
           ))}
         </tbody>
       </table>
@@ -58,7 +59,7 @@ function Existing({ type, updateEntry }) {
   );
 }
 
-function Selection({ item, updateEntry }) {
+function Selection({ item, updateEntry, index, currentPage }) {
   const [showDelete, setShowDelete] = useState(null);
   function handleUpdate(id) {
     console.log(id);
@@ -66,44 +67,45 @@ function Selection({ item, updateEntry }) {
   }
 
   function deleteProduct(id) {
-    axios
-      .delete(import.meta.env.VITE_API_URL + `/currencies/${id}`)
-      .then((response) => {
-        console.log("Deleted successfully", response.data);
-        setShowDelete(null);
-      })
-      .catch((error) => {
-        console.error("Error in deleting the product", error.message);
-      });
+    // axios
+    //   .delete(import.meta.env.VITE_API_URL + `/currencies/${id}`)
+    //   .then((response) => {
+    //     console.log("Deleted successfully", response.data);
+    //     setShowDelete(null);
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error in deleting the product", error.message);
+    //   });
+    console.log(id + " will be deleted");
   }
+  const limit = 2;
+
   return (
     <tr key={item.id} className="text-center">
-      <td className="border-t border-gray-200 py-2">{item.id}</td>
+      <td className="border-t border-gray-200 py-2">
+        {index + (currentPage - 1) * limit}
+      </td>
       <td className="border-t border-gray-200 py-2 max-w-[10rem] overflow-hidden text-ellipsis whitespace-nowrap">
-        {item.Name}
+        {item.createdAt.substring(0, 10)}
       </td>
       <td className="border-t border-gray-200 py-2">
-        <img
-          src={import.meta.env.VITE_IMAGE_URL + item.Image}
-          alt={`Product ${item.id}`}
-          className="h-10 w-10 rounded-full border-white border-2 object-cover mx-auto"
-        />
+        {item.title.substring(0, 20)}...
       </td>
-      <td className="border-t border-gray-200 py-2">
-        <span>₹</span>
-        {item.Price}
+      <td className="border-t border-gray-200 py-2 text-ellipsis">
+        {item.description.substring(0, 30)}...
       </td>
-      <td className="border-t border-gray-200 py-2">{item.Type}</td>
       <td className="border-t border-gray-200 py-2 flex justify-center space-x-2">
         <button
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          onClick={() => handleUpdate(item.id)}
+          onClick={() => handleUpdate(item.article_id)}
         >
           Update
         </button>
         <button
           className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-          onClick={() => setShowDelete(item.id)}
+          onClick={() => {
+            setShowDelete(item.article_id);
+          }}
         >
           Delete
         </button>
@@ -123,9 +125,14 @@ function Selection({ item, updateEntry }) {
               />
             </button>
             <h2 className="text-xl text-gray-800 font-bold mb-4 mt-2">
-              Do you want to delete the product ?
+              Do you want to delete this Article ?
             </h2>
-            <button className="btn btn-error">Delete</button>
+            <button
+              className="btn btn-error"
+              onClick={() => deleteProduct(showDelete)}
+            >
+              Delete
+            </button>
           </div>
         </div>
       )}

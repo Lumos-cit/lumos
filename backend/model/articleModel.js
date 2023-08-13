@@ -12,23 +12,20 @@ const Article = sequelize.define("article", {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  content: {
-    type: DataTypes.TEXT('long'),
+  description: {
+    type: DataTypes.TEXT("long"),
   },
   cover_img: {
     type: DataTypes.STRING,
   },
-  poster: {
+  content: {
+    type: DataTypes.TEXT("long"),
+  },
+  tag: {
     type: DataTypes.STRING,
   },
-  isNews: {
-    type: DataTypes.BOOLEAN,
-  },
-  isEvent: {
-    type: DataTypes.BOOLEAN,
-  },
-  isFeatured: {
-    type: DataTypes.BOOLEAN,
+  author_id: {
+    type: Sequelize.INTEGER,
   },
 });
 
