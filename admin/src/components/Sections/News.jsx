@@ -88,7 +88,7 @@ function NewsSelection({ item, updateEntry, index, currentPage }) {
       });
     console.log(id + " will be deleted");
   }
-  const limit = 2;
+  const limit = 10;
 
   return (
     <tr key={item.id} className="text-center">
