@@ -11,14 +11,9 @@ import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
-
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
-import Blocks from "editorjs-blocks-react-renderer";
-
-import axios from "axios";
-
+import Editor from "./Editor";
 import RelatedImage from "/Assets/Images/RelatedImage.svg";
-import ArticlePoster from "/Assets/Images/ArticlePoster.svg";
 
 function ArticlePage({ data, author }) {
   return (
@@ -30,10 +25,6 @@ function ArticlePage({ data, author }) {
           <p className="poppins-bold text-7xl mt-[2%] text-white">
             {data && data.title}
           </p>
-
-          {/* <p className="text-3xl poppins-semibold mt-[2%] text-white">
-            Mind over matter: Taking control of your mental well-being
-          </p> */}
           <div className="flex justify-between mt-[2%]">
             <p className=" text-white">
               By {author && author?.name} ( {author && author?.department} )
@@ -48,39 +39,7 @@ function ArticlePage({ data, author }) {
             {data && data.description}
           </p>
           {/*  */}
-          {data && (
-            <Blocks
-              data={JSON.parse(data.content)}
-              config={{
-                embed: {
-                  className: "border-0",
-                },
-                header: {
-                  className: "font-bold",
-                },
-                image: {
-                  className: "w-full max-w-screen-md",
-                  actionsClassNames: {
-                    stretched: "w-full h-80 object-cover",
-                    withBorder: "border border-2",
-                    withBackground: "p-2",
-                  },
-                },
-                list: {
-                  className: "list-inside",
-                },
-                paragraph: {
-                  className: "text-base text-opacity-75",
-                  actionsClassNames: {
-                    alignment: "text-{alignment}", // This is a substitution placeholder: left or center.
-                  },
-                },
-                quote: {
-                  className: "py-3 px-5 italic font-serif",
-                },
-              }}
-            />
-          )}
+          {data && <Editor content={JSON.parse(data.content)} />}
           {/*  */}
           <div className="p-12 flex ">
             <div className="basis-[40%]">
