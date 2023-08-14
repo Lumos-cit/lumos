@@ -24,7 +24,7 @@ import Editor from "./Editor";
 function ArticlePage({ data, author }) {
   return (
     <section className="h-full bg-black">
-      <div className="flex w-11/12 mx-auto gap-16">
+      <div className="flex flex-col lg:flex-row w-11/12 mx-auto gap-16">
         <div className="basis-[60%] mt-[3%]">
           <h1 className="poppins-bold text-xl text-white">29, March 2023</h1>
 
@@ -46,7 +46,7 @@ function ArticlePage({ data, author }) {
           </p>
           {/*  */}
           {data && (
-            <Editor
+            <Blocks
               data={JSON.parse(data.content)}
               config={{
                 embed: {
@@ -67,7 +67,7 @@ function ArticlePage({ data, author }) {
                   className: "list-inside",
                 },
                 paragraph: {
-                  className: "text-base text-opacity-75",
+                  className: "text-white poppins-regular leading-relaxed",
                   actionsClassNames: {
                     alignment: "text-{alignment}", // This is a substitution placeholder: left or center.
                   },
@@ -79,13 +79,13 @@ function ArticlePage({ data, author }) {
             />
           )}
           {/*  */}
-          <div className="p-12 flex ">
-            <div className="basis-[40%]">
+          <div className="p-12 flex gap-10">
+            <div className="basis-[40%] ">
               <img src={author && author.profile_pic} />
             </div>
             <div className="mt-[3%] basis-[50%]">
               <h1 className="poppins-bold text-white">
-                {author && author.name}
+                {author && author.name} -{author && author.department}
               </h1>
               <p className="text-white">{author && author.bio}</p>
             </div>
@@ -108,17 +108,17 @@ function ArticlePage({ data, author }) {
           </div>
           <br />
           <hr />
-          <div className="px-20 mt-[3%]">
+          <div className="px-2 lg:px-20 mt-[3%]">
             <h1 className="poppins-bold text-3xl text-white">Related</h1>
-            <div className="border border-solid border-white">
+            <div className="border border-solid border-white ">
               <div className="flex gap-5 p-2">
-                <div className="basis-[70%] mt-[3%] h-[16vh] flex flex-col justify-between p-1">
+                <div className="basis-[70%] mt-[3%] h-[54vh] lg:h-[16vh] flex flex-col justify-between p-1">
                   <div>
                     <p className="text-white">
                       A Guide To Garner Your Galaxy of Thoughts
                     </p>
                   </div>
-                  <div className="flex justify-between">
+                  <div className="flex flex-col lg:flex-row justify-between">
                     <p className="text-white">29, March 2023</p>
                     <p className="underline text-blue-500">Click Here ˃˃</p>
                   </div>
@@ -130,13 +130,13 @@ function ArticlePage({ data, author }) {
             </div>
             <div className="border border-solid border-white">
               <div className="flex gap-5 p-2">
-                <div className="basis-[70%] mt-[3%] h-[16vh] flex flex-col justify-between p-1">
+                <div className="basis-[70%] mt-[3%] h-[54vh] lg:h-[16vh] flex flex-col justify-between p-1">
                   <div>
                     <p className="text-white">
                       A Guide To Garner Your Galaxy of Thoughts
                     </p>
                   </div>
-                  <div className="flex justify-between">
+                  <div className="flex flex-col lg:flex-row justify-between">
                     <p className="text-white">29, March 2023</p>
                     <p className="underline text-blue-500">Click Here ˃˃</p>
                   </div>
@@ -148,13 +148,13 @@ function ArticlePage({ data, author }) {
             </div>
             <div className="border border-solid border-white">
               <div className="flex gap-5 p-2">
-                <div className="basis-[70%] mt-[3%] h-[16vh] flex flex-col justify-between p-1">
+                <div className="basis-[70%] mt-[3%] h-[54vh] lg:h-[16vh] flex flex-col justify-between p-1">
                   <div>
                     <p className="text-white">
                       A Guide To Garner Your Galaxy of Thoughts
                     </p>
                   </div>
-                  <div className="flex justify-between">
+                  <div className="flex flex-col lg:flex-row justify-between">
                     <p className="text-white">29, March 2023</p>
                     <p className="underline text-blue-500">Click Here ˃˃</p>
                   </div>
