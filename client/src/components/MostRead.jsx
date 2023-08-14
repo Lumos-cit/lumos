@@ -37,18 +37,18 @@ function MostRead() {
               max="100"
             ></progress>
             <div className="flex justify-end">
-              <img src={book} className="h-[20vh]" />
+              <img src={book} className="h-[10vh] lg:h-[20vh]" />
             </div>
           </div>
         </div>
       </div>
-      <div className="flex flex-row w-5/6 mx-auto justify-between flex-wrap">
-        <img src={poster} className="w-[140px] lg:w-[184px] h-[290px]" />
-        <img src={poster} className="w-[140px] lg:w-[184px] h-[290px]" />
-        <img src={poster} className="w-[140px] lg:w-[184px] h-[290px]" />
-        <img src={poster} className="w-[140px] lg:w-[184px] h-[290px]" />
-        <img src={poster} className="w-[140px] lg:w-[184px] h-[290px]" />
-        <img src={poster} className="w-[140px] lg:w-[184px] h-[290px]" />
+      <div className="flex flex-row w-full justify-center items-center flex-wrap">
+        <img src={poster} className="w-[140px] lg:w-[184px] h-[290px] mx-1 lg:mx-6" />
+        <img src={poster} className="w-[140px] lg:w-[184px] h-[290px] mx-1 lg:mx-6" />
+        <img src={poster} className="w-[140px] lg:w-[184px] h-[290px] mx-1 lg:mx-6" />
+        <img src={poster} className="w-[140px] lg:w-[184px] h-[290px] mx-1 lg:mx-6" />
+        <img src={poster} className="w-[140px] lg:w-[184px] h-[290px] mx-1 lg:mx-6" />
+        <img src={poster} className="w-[140px] lg:w-[184px] h-[290px] mx-1 lg:mx-6" />
       </div>
     </div>
   );
