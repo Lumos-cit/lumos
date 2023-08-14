@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const limit = 2;
+const limit = 10;
 
 export function getArticles(setData, setTotalPage, currentPage) {
   const offset = limit * (currentPage - 1);

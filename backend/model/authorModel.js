@@ -19,7 +19,7 @@ const Author = sequelize.define(
       type: DataTypes.STRING,
     },
     bio: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT("long"),
     },
     profile_pic: {
       type: DataTypes.STRING,

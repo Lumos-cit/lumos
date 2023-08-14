@@ -7,7 +7,6 @@ import NotJustArticles from "../SvgComponents/NotJustArticles";
 function Articles() {
   return (
     <div className="relative bg-white h-full pt-[10%] lg:pt-2">
-   
       <NotJustArticles />
 
       <h1 className="text-3xl lg:text-[120px] ibm-bold text-[#FFE68F] tracking-widest leading-none text-center pt-5">
@@ -51,13 +50,13 @@ function Articles() {
         possible are shattered.
       </p>
 
-      <div className="flex flex-row w-5/6 mx-auto justify-between flex-wrap">
-        <img src={poster} className="w-[140px]   lg:w-[184px] h-[290px]" />
-        <img src={poster} className="w-[140px]   lg:w-[184px] h-[290px]" />
-        <img src={poster} className="w-[140px]   lg:w-[184px] h-[290px]" />
-        <img src={poster} className="w-[140px]   lg:w-[184px] h-[290px]" />
-        <img src={poster} className="w-[140px]   lg:w-[184px] h-[290px]" />
-        <img src={poster} className="w-[140px]   lg:w-[184px] h-[290px]" />
+      <div className="flex flex-row w-full items-center justify-center flex-wrap ">
+        <img src={poster} className="w-[140px]   lg:w-[184px] h-[290px] mx-1 lg:mx-6" />
+        <img src={poster} className="w-[140px]   lg:w-[184px] h-[290px] mx-1 lg:mx-6" />
+        <img src={poster} className="w-[140px]   lg:w-[184px] h-[290px] mx-1 lg:mx-6" />
+        <img src={poster} className="w-[140px]   lg:w-[184px] h-[290px] mx-1 lg:mx-6" />
+        <img src={poster} className="w-[140px]   lg:w-[184px] h-[290px] mx-1 lg:mx-6" />
+        <img src={poster} className="w-[140px]   lg:w-[184px] h-[290px] mx-1 lg:mx-6" />
       </div>
       <div className="flex justify-center">
         <button className="btn bg-custom-1 btn-wide mx-auto text-slate-400 hover:text-white">
