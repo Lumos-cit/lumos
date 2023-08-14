@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useSelector } from "react-redux";
 import Editor from "../Editor/Editor";
+import { toast } from "react-toastify";
+import { showToast } from "../../services/showToast";
 
 function AddArticle({ update }) {
   const [title, setTitle] = useState("");
@@ -13,8 +14,6 @@ function AddArticle({ update }) {
 
   //
   const [allAuthors, setAllAuthors] = useState([]);
-
-  const contentType = useSelector((state) => state.product.contentType);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -34,6 +33,7 @@ function AddArticle({ update }) {
         .then((res) => {
           console.log(res.data);
           console.log("Product Updated successfully");
+          showToast(toast, "success", "Article Updated successfully");
         })
         .catch((err) => console.log(err));
     } else {
@@ -42,6 +42,7 @@ function AddArticle({ update }) {
         .then((res) => {
           console.log(res.data);
           console.log("Product Uploaded successfully");
+          showToast(toast, "success", "Article Uploaded successfully");
         })
         .catch((err) => console.log(err));
     }
@@ -61,8 +62,6 @@ function AddArticle({ update }) {
           setContent(JSON.parse(data.content));
           setTag(data.tag);
           setAuthor(data.author_id);
-
-          console.log(JSON.parse(data.content));
         })
         .catch((err) => console.log(err));
     } else {
@@ -104,7 +103,7 @@ function AddArticle({ update }) {
                 type="text"
                 value={title}
                 placeholder="Type here"
-                className="input input-bordered w-full max-w-lg text-black"
+                className="input input-bordered w-full max-w-lg text-white"
                 required={true}
                 onChange={(e) => setTitle(e.target.value)}
               />
@@ -117,7 +116,7 @@ function AddArticle({ update }) {
                 type="text"
                 value={image}
                 placeholder="Type here"
-                className="input input-bordered w-full max-w-lg text-black"
+                className="input input-bordered w-full max-w-lg text-white"
                 required={true}
                 onChange={(e) => setImage(e.target.value)}
               />
@@ -129,7 +128,7 @@ function AddArticle({ update }) {
               Description <span className="text-red-600">*</span>
             </label>
             <textarea
-              className="textarea textarea-bordered w-full h-[250px] text-black"
+              className="textarea textarea-bordered w-full h-[250px] text-white"
               placeholder="Type Here"
               value={description}
               required={true}
@@ -154,7 +153,7 @@ function AddArticle({ update }) {
                 Tag <span className="text-red-600">*</span>
               </label>
               <select
-                className="select select-bordered w-full text-black"
+                className="select select-bordered w-full text-white"
                 value={tag}
                 onChange={(e) => {
                   setTag(e.target.value);
@@ -174,7 +173,7 @@ function AddArticle({ update }) {
                 Author <span className="text-red-600">*</span>
               </label>
               <select
-                className="select select-bordered w-full text-black"
+                className="select select-bordered w-full text-white"
                 value={author}
                 onChange={(e) => {
                   setAuthor(e.target.value);

@@ -7,6 +7,7 @@ import { faClose } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import "react-responsive-pagination/themes/classic.css";
 import "../../css/pagination.css";
+
 function News({ updateEntry }) {
   const [data, setData] = useState([]);
   const [totalPage, setTotalPage] = useState([]);
@@ -27,7 +28,7 @@ function News({ updateEntry }) {
           <tr>
             <th className="py-2 text-white">ID</th>
             <th className="py-2 text-white">Date</th>
-            <th className="py-2 text-white">Content</th>
+            <th className="py-2 text-white">Title</th>
             <th className="py-2 text-white">Author</th>
             <th className="py-2 text-white">Actions</th>
           </tr>
@@ -71,13 +72,13 @@ function NewsSelection({ item, updateEntry, index, currentPage }) {
 
   async function fetchAuthors() {
     axios
-      .get(import.meta.env.VITE_BACKEND_URL + "/author/" + item.author_name)
+      .get(import.meta.env.VITE_BACKEND_URL + "/author/" + item.author_id)
       .then((res) => setAuthor(res.data.name));
   }
 
   function deleteProduct(id) {
     axios
-      .delete(import.meta.env.VITE_BACKEND_URL + `/api/article/${id}`)
+      .delete(import.meta.env.VITE_BACKEND_URL + `/api/news/${id}`)
       .then((res) => {
         console.log("Deleted successfully", res.data);
         setShowDelete(null);
@@ -98,20 +99,20 @@ function NewsSelection({ item, updateEntry, index, currentPage }) {
         {item.createdAt && item?.createdAt.substring(0, 10)}
       </td>
       <td className="border-t border-gray-200 py-2">
-        {item.content && item?.content.substring(0, 20)}...
+        {item.title && item?.title.substring(0, 20)}...
       </td>
       <td className="border-t border-gray-200 py-2 text-ellipsis">{author}</td>
       <td className="border-t border-gray-200 py-2 flex justify-center space-x-2">
         <button
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          onClick={() => handleUpdate(item.article_id)}
+          onClick={() => handleUpdate(item.news_id)}
         >
           Update
         </button>
         <button
           className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
           onClick={() => {
-            setShowDelete(item.article_id);
+            setShowDelete(item.news_id);
           }}
         >
           Delete
