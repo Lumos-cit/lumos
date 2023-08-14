@@ -1,6 +1,24 @@
 import React from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import wand from "/Assets/Images/wand.svg";
 function News() {
+  const [news, setNews] = useState([]);
+  // let tag = "career";
+
+  useEffect(() => {
+    fetchNews();
+  }, []);
+
+  function fetchNews() {
+    axios
+      .get(import.meta.env.VITE_BACKEND_URL + `/api/news?limit=${4}`)
+      .then((res) => {
+        console.log(res.data.data);
+        setNews(res.data.data);
+      });
+  }
+
   return (
     <div className="bg-white ">
       <div className="relative h-[65vh] hidden md:block pt-[5%]">
