@@ -14,12 +14,12 @@ import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import Blocks from "editorjs-blocks-react-renderer";
-import Editor from "./Editor";
 
 import axios from "axios";
 
 import RelatedImage from "/Assets/Images/RelatedImage.svg";
 import ArticlePoster from "/Assets/Images/ArticlePoster.svg";
+import Editor from "./Editor";
 
 function ArticlePage({ data, author }) {
   return (

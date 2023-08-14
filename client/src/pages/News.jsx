@@ -15,37 +15,26 @@ function News() {
   const body =
     "This article dives into the common money traps that many college students fall into, and offers practical advice on how to avoid them. From overspending to getting caught up in credit card offers and Crypto scams, we’ll show you how to make wise financial choices that will set you up for success during and after college.";
 
-  const Image1 = [News1, News2, News3, News4, News5];
-  const Button1 = ["news", "news", "news", "news"];
-  const [articles, setArticles] = useState([]);
-  let tag = "news";
 
+  const[news , setNews] = useState([])
   useEffect(() => {
-    fetchArticles();
+    fetchNews();
   }, []);
 
-  function fetchArticles() {
+  function fetchNews() {
     axios
-      .get(import.meta.env.VITE_BACKEND_URL + `/api/articles?tag=${tag}`)
+      .get(import.meta.env.VITE_BACKEND_URL + `/api/news`)
       .then((res) => {
         console.log(res.data.data);
-        setArticles(res.data.data);
+        setNews(res.data.data);
       });
   }
 
-  const dates = [
-    "23, March 2023",
-    "23, March 2023",
-    "23, March 2023",
-    "23, March 2023",
-    "23, March 2023",
-    "23, March 2023",
-  ];
   return (
     <div>
       <SectionHead head={head} body={body} />
       <div>
-        <NewsFlex articles={articles} />
+        <NewsFlex news={news} />
       </div>
     </div>
   );
