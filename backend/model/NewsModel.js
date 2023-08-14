@@ -8,17 +8,20 @@ const News = sequelize.define("news", {
     allowNull: false,
     primaryKey: true,
   },
+  title: {
+    type: DataTypes.TEXT,
+  },
   content: {
     type: DataTypes.TEXT("long"),
   },
-  author_name: {
+  author_id: {
     type: Sequelize.INTEGER,
   },
 });
 
 sequelize
   // .sync({ alter: true })
-    .sync()
+  .sync()
   .then(() => {
     console.log("News table created successfully!");
   })

@@ -19,7 +19,7 @@ router.post("/article", addArticle);
 
 router.put("/article/:id", updateArticle);
 
-router.delete("/article", deleteArticle);
+router.delete("/article/:id", deleteArticle);
 
 //
 const {
@@ -36,8 +36,8 @@ router.get("/news/:id", findOneNews);
 
 router.post("/news", addNews);
 
-router.put("/news", updateNews);
+router.put("/news/:id", updateNews);
 
-router.delete("/news", deleteNews);
+router.delete("/news/:id", deleteNews);
 
 module.exports = router;

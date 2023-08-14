@@ -3,8 +3,9 @@ const News = require("../../model/NewsModel");
 const addNews = async (req, res) => {
   const data = req.body;
   let info = {
+    title: data.title,
     content: data.content,
-    author_name: data.author_name,
+    author_id: data.author_id,
   };
 
   try {
@@ -19,8 +20,9 @@ const addNews = async (req, res) => {
 const updateNews = async (req, res) => {
   const data = req.body;
   let info = {
+    title: data.title,
     content: data.content,
-    author_name: data.author_name,
+    author_id: data.author_id,
   };
 
   try {
@@ -94,9 +96,11 @@ const deleteNews = async (req, res) => {
   })
     .then(() => {
       console.log("Successfully deleted record.");
+      res.send("Deleted Successfully");
     })
     .catch((error) => {
       console.error("Failed to delete record : ", error);
+      res.status(400).json("Failed delete the news");
     });
 };
 

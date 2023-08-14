@@ -3,7 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import Existing from "./Entries/Existing";
 import { useSelector } from "react-redux";
-import AddProduct from "./Entries/AddProduct";
+import AddArticle from "./Entries/AddArticle";
+import AddNews from "./Entries/AddNews";
 
 function Entry() {
   const [newEntry, setNewEntry] = useState(false);
@@ -52,7 +53,11 @@ function Entry() {
         </div>
       </div>
       {newEntry ? (
-        <AddProduct update={update} />
+        type == "Articles" ? (
+          <AddArticle update={update} />
+        ) : (
+          <AddNews update={update} />
+        )
       ) : (
         <Existing type={type} updateEntry={updateEntry} />
       )}

@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import wand from "/Assets/Images/wand.svg";
+import StickWithUs from "../SvgComponents/StickWithUs";
 function News() {
   const [news, setNews] = useState([]);
   // let tag = "career";
@@ -21,39 +22,8 @@ function News() {
 
   return (
     <div className="bg-white ">
-      <div className="relative h-[65vh] hidden md:block pt-[5%]">
-        <img
-          src={wand}
-          className="absolute w-[300px] h-[300px] right-40"
-          style={{ zIndex: 1 }}
-        />
-        <div className="bg-[#FFC600] h-[40vh] w-5/6 mx-auto flex border rounded-3xl">
-          <div className="basis-3/4">
-            <h1 className=" text-black text-4xl lg:text-[80px] ibm-bold tracking-wide leading-none ml-10 mt-5 ">
-              Stick With Us
-            </h1>
-            <h1 className="ibm-bold text-white md:text-[40px] ml-10">
-              For the latest
-            </h1>
-          </div>
-        </div>
-      </div>
+      <StickWithUs />
 
-      <div className=" h-[35vh] block md:hidden">
-        <div className="bg-[#FFC600] w-5/6 mx-auto flex border rounded-3xl h-[25vh] relative ">
-          <img
-            src={wand}
-            className="absolute w-[150px] h-[150px] right-0 top-0"
-            style={{ zIndex: 1 }}
-          />
-          <div className="basis-3/4 mt-2 p-3">
-            <h1 className=" text-black text-2xl ibm-bold tracking-wide leading-none ">
-              Stick With Us
-            </h1>
-            <h1 className="ibm-bold text-white text-2xl ">For the latest</h1>
-          </div>
-        </div>
-      </div>
       <h1 className="ibm-bold text-6xl lg:text-[150px] text-center text-black leading-none pt-10">
         NEWS
       </h1>

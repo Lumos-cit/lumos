@@ -75,7 +75,7 @@ const Editor = ({ content, setContent }) => {
     <React.Fragment>
       <div
         id={EDITTOR_HOLDER_ID}
-        className="border-2 border-white rounded-lg p-2"
+        className="border-2 border-white rounded-lg p-2 text-white"
       >
         {" "}
       </div>

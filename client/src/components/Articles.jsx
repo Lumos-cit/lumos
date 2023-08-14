@@ -2,30 +2,19 @@
 import React from "react";
 import ink from "/Assets/Images/ink.svg";
 import poster from "/Assets/Images/poster.svg";
+import NotJustArticles from "../SvgComponents/NotJustArticles";
 
 function Articles() {
   return (
     <div className="relative bg-white h-full pt-[10%] lg:pt-2">
-      {/* <img
-        src={ink}
-        className="absolute right-[1%] top-[4%] lg:top-[9%] w-[40%] lg:w-[50%] h-auto "
-      /> */}
-      <div className="bg-white h-[20vh] lg:h-[40vh] flex w-4/5 mx-auto ">
-        <div className="basis-[60%] w-5/6 h-1/2">
-          <h1 className="text-4xl lg:text-[108px] text-black ibm-bold leading-none">
-            Not Just ARTICLES
-          </h1>
-        </div>
-        <div className="basis-[40%]">
-          <img src={ink} className="w-[100%] lg:w-[100%] h-auto " />
-        </div>
-      </div>
+   
+      <NotJustArticles />
 
-      <h1 className="text-lg lg:text-[120px] ibm-bold text-[#FFE68F] tracking-widest leading-none text-center">
+      <h1 className="text-3xl lg:text-[120px] ibm-bold text-[#FFE68F] tracking-widest leading-none text-center pt-5">
         Emotions Captured
       </h1>
 
-      <div className="flex justify-center lg:justify-between mt-[10%] lg:mt-10 w-5/6 mx-auto flex-wrap">
+      <div className="flex justify-center lg:justify-between mt-[5%] lg:mt-10 w-5/6 mx-auto flex-wrap">
         <div>
           <button className="btn btn-neutral border-[#F8F301] border-2 text-[#F8F301] btn-wide lg:btn-md mx-auto my-[2%]">
             XPLORE

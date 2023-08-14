@@ -43,7 +43,7 @@ function MostRead() {
         </div>
       </div>
       <div className="flex flex-row w-5/6 mx-auto justify-between flex-wrap">
-        <img src={poster} className="6 lg:w-[184px] h-[290px]" />
+        <img src={poster} className="w-[140px] lg:w-[184px] h-[290px]" />
         <img src={poster} className="w-[140px] lg:w-[184px] h-[290px]" />
         <img src={poster} className="w-[140px] lg:w-[184px] h-[290px]" />
         <img src={poster} className="w-[140px] lg:w-[184px] h-[290px]" />

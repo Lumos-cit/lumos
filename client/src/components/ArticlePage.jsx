@@ -19,6 +19,7 @@ import axios from "axios";
 
 import RelatedImage from "/Assets/Images/RelatedImage.svg";
 import ArticlePoster from "/Assets/Images/ArticlePoster.svg";
+import Editor from "./Editor";
 
 function ArticlePage({ data, author }) {
   return (
@@ -30,10 +31,6 @@ function ArticlePage({ data, author }) {
           <p className="poppins-bold text-7xl mt-[2%] text-white">
             {data && data.title}
           </p>
-
-          {/* <p className="text-3xl poppins-semibold mt-[2%] text-white">
-            Mind over matter: Taking control of your mental well-being
-          </p> */}
           <div className="flex justify-between mt-[2%]">
             <p className=" text-white">
               By {author && author?.name} ( {author && author?.department} )
@@ -49,7 +46,7 @@ function ArticlePage({ data, author }) {
           </p>
           {/*  */}
           {data && (
-            <Blocks
+            <Editor
               data={JSON.parse(data.content)}
               config={{
                 embed: {
