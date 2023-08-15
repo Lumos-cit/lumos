@@ -1,87 +1,92 @@
-import React from "react";
-import bg from "/Assets/Images/Background.svg";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import SectionHead from "../Components/SectionHead";
+import SectionFlex from "../Components/SectionFlex";
+import { Navigation, Pagination, Scrollbar, A11y,Autoplay  } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
 function MainHead() {
+  const [cards, setCards] = useState([]);
+  const [showFullContent, setShowFullContent] = useState(false);
+
+
+  function fetchCards() {
+    axios
+      .get(import.meta.env.VITE_BACKEND_URL + `/api/articles`)
+      .then((res) => {
+        console.log(res.data.data);
+        setCards(res.data.data);
+      });
+  }
+
+  useEffect(() => {
+    fetchCards();
+  }, []);
+
   return (
     <>
-      <div className="bg-cover bg-main-lg bg-no-repeat h-full hidden lg:block">
-        <div className="flex items-center p-10 gap-40 ">
-          <div className="basis-1/3">
-            <img src={bg} className="h-[400px] w-[400px]" />
-          </div>
-          <div className="basis-1/2">
-            <div className="flex flex-col gap-4">
-              <div className="flex gap-4">
-                <button className="btn btn-outline btn-warning btn-sm  poppins-medium">
-                  Feb 19 2023
-                </button>
-                <button className="btn btn-outline btn-warning btn-sm  poppins-medium">
-                  Spring Edition
-                </button>
-                <button className="btn btn-outline btn-warning btn-sm  poppins-medium">
-                  Student HQ
-                </button>
-              </div>
-              <div>
-                <h1 className="text-6xl text-start poppins-medium text-white">
-                  <span>The Five Most Critical </span>
-                  <span className="text-[#FFC600]">Financial Pitfalls </span>to
-                  Avoid
-                </h1>
-              </div>
-              <div className="poppins-regular text-white">
-                This article dives into the common money traps that many college
-                students fall into, and offers practical advice on how to avoid
-                them. From overspending to getting caught up in credit card
-                offers and Crypto scams, we’ll show you how to make wise
-                financial choices that will set you up for success during and
-                after college.
-              </div>
-              <span className="text-end decoration-[#FFC600] underline text-[#FFC600] poppins-light">
-                continue reading
-              </span>
-            </div>
-          </div>
-        </div>
+     <Swiper
+      modules={[Navigation, Pagination, Scrollbar, A11y,Autoplay ]}
+      spaceBetween={50}
+      slidesPerView={1}
+      navigation
+      autoplay
+      pagination={{ clickable: true }}
+      scrollbar={{ draggable: true }}
+      onSwiper={(swiper) => console.log(swiper)}
+      onSlideChange={() => console.log('slide change')}
+  >
+    {cards.map((card) => (
+      <SwiperSlide key={card.article_id} className="article-card ">
+          <div className="flex w-full h-[25rem] justify-between">
+      <div className="flex bg-black text-white w-1/3 p-4">
+        <img src={card.cover_img} alt="Article Cover" className="h-full w-full" />
       </div>
-
-      <div className="bg-cover bg-main-lg bg-no-repeat h-full block md:hidden">
-        <div className="flex items-center gap-2 p-2 ">
-          <div className="basis-[70%]">
-            <img src={bg} className="h-[400px] w-[400px] " />
-          </div>
-          <div className="basis-[30%]">
-            <button className="btn btn-outline btn-warning btn-sm  poppins-regular my-2 mx-2 ">
-              Feb 19 2023
-            </button>
-            <button className="btn btn-outline btn-warning btn-sm  poppins-regular my-2 mx-2 ">
-              Spring Edition
-            </button>
-            <button className="btn btn-outline btn-warning btn-sm  poppins-regular my-2 mx-2 ">
-              Student HQ
-            </button>
-          </div>
+      <div className="flex flex-col bg-black text-white w-2/3 p-4">
+        <div>
+          <h2 className="font-bold text-3xl">{card.title}</h2>
+          <p className="font-semibold text-2xl">{card.description}</p>
         </div>
-
-        <div className="p-5">
-          <h1 className="text-3xl text-start poppins-medium text-white">
-            <span>The Five Most Critical </span>
-            <span className="text-[#FFC600]">Financial Pitfalls </span>to Avoid
-          </h1>
+        <div className="font-italic text-xl  overflow-y-auto max-h-[10rem]">
+          <p className="scroll-content">
+          {showFullContent
+      ? JSON.parse(card.content).blocks.map(block => {
+          if (block.type === 'paragraph') {
+            return <p>{block.data.text}</p>;
+          }
+          if (block.type === 'list') {
+            return (
+              <ul>
+                {block.data.items.map(item => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            );
+          }
+          return null;
+        })
+      : JSON.parse(card.content).blocks[0].data.text.slice(0, 50) + '...'}
+          </p>
         </div>
-        <div className="poppins-regular text-white p-5">
-          This article dives into the common money traps that many college
-          students fall into, and offers practical advice on how to avoid them.
-          From overspending to getting caught up in credit card offers and
-          Crypto scams, we’ll show you how to make wise financial choices that
-          will set you up for success during and after college.
-        </div>
-        <div className=" pl-5 pb-10">
-          <span className=" decoration-[#FFC600] underline text-[#FFC600] poppins-light">
-            continue reading
-          </span>
-        </div>
+        {!showFullContent && (
+          <button
+            className="text-yellow-500 mt-2 cursor-pointer bottom-10"
+            onClick={() => setShowFullContent(true)}
+          >
+            Continue Reading......
+          </button>
+        )}
       </div>
+    </div>
+
+
+      </SwiperSlide>
+    ))}
+  </Swiper>
     </>
   );
 }
