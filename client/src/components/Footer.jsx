@@ -15,7 +15,7 @@ function Footer() {
             <img src={logo} className="p-5" />
             <p className="pl-7 text-black">About Us</p>
             <p className="pl-7 text-black">Contact Us</p>
-            <div className="flex justify-between w-1/12 pl-7 mt-3">
+            <div className="flex justify-between w-2/12 pl-7 mt-3">
               <FontAwesomeIcon icon={faInstagram} className="text-black" />
               <FontAwesomeIcon icon={faLinkedin} className="text-black" />
               <FontAwesomeIcon icon={faTwitter} className="text-black" />
