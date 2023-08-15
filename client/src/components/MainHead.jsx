@@ -6,7 +6,7 @@ import { Navigation, Pagination, Scrollbar, A11y,Autoplay  } from 'swiper/module
 import { Swiper, SwiperSlide } from 'swiper/react';
 import './MainHead.css'
 import 'swiper/css/scrollbar';
-
+import { Link } from "react-router-dom";
 
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -26,9 +26,7 @@ function MainHead() {
       });
   }
 
-  function NavToArticles(){
-    axios.get
-  }
+
 
   useEffect(() => {
     fetchCards();
@@ -48,47 +46,50 @@ function MainHead() {
 
   >
     {cards && cards.map((card) => (
-      <SwiperSlide key={card.article_id} className="article-card ">
-          <div className="flex w-full h-[25rem] justify-between">
-      <div className="flex bg-black text-white w-1/3 p-4">
-        <img src={card.cover_img} alt="Article Cover" className="h-full w-full" />
-      </div>
-      <div className="flex flex-col bg-black text-white w-2/3 p-4">
-        <div>
-          <h2 className="font-bold text-3xl text-yellow-400">{card.title}</h2>
-          <p className="font-semibold text-2xl">{card.description}</p>
-        </div>
-        <div className="font-italic text-xl max-h-[10rem] scrollbar-thin scrollbar-thumb-transparent scrollbar-track-transparent">
-          <p className="scroll-content">
-          {showFullContent
-      ? JSON.parse(card.content).blocks.map(block => {
-          if (block.type === 'paragraph') {
-            return <p>{block.data.text}</p>;
-          }
-          if (block.type === 'list') {
-            return (
-              <ul>
-                {block.data.items.map(item => (
-                  <li>{item}</li>
-                ))}
-              </ul>
-            );
-          }
-          return null;
-        })
-      : JSON.parse(card.content).blocks[0].data.text.substring(0, 50) + '...'}
-          </p>
-        </div>
-        {!showFullContent && (
-          <p
-            className="text-yellow-500 mt-2 cursor-pointer bottom-10"
-            onClick={() => setShowFullContent(true)}
-          >
-            Continue Reading......
-          </p>
-        )}
-      </div>
-    </div>
+      <SwiperSlide key={card.article_id} className="article-card bg-black ">
+          <div className=" bg-black w-full  ">
+            <div className="flex w-[80%] h-[25rem] justify-between mx-auto">
+              <div className="flex  text-white lg:w-1/3 lg:p-4 md:w-1/3 ">
+                <img src={card.cover_img} alt="Article Cover" className="h-full w-full" />
+              </div>
+              <div className="flex flex-col bg-black text-white w-2/3 ">
+                <div className="">
+                  <h2 className="font-bold text-3xl text-yellow-400 uppercase lg:mt-[1rem]">{card.title}</h2>
+                  <p className="font-semibold text-2xl">{card.description}</p>
+                </div>
+                <div className="font-italic text-xl max-h-[10rem] scrollbar-thin scrollbar-thumb-transparent scrollbar-track-transparent">
+                  <p className="scroll-content">
+                  {showFullContent
+              ? JSON.parse(card.content).blocks.map(block => {
+                  if (block.type === 'paragraph') {
+                    return <p>{block.data.text}</p>;
+                  }
+                  if (block.type === 'list') {
+                    return (
+                      <ul>
+                        {block.data.items.map(item => (
+                          <li>{item}</li>
+                        ))}
+                      </ul>
+                    );
+                  }
+                  return null;
+                })
+              : JSON.parse(card.content).blocks[0].data.text.substring(0, 50) + '...'}
+                  </p>
+                </div>
+                {!showFullContent && (
+                    <div className="text-yellow-500 mt-2 cursor-pointer bottom-10">
+                      <Link to={`/article/${card.article_id}`} className="text-yellow-500">
+                        Continue Reading......
+                      </Link>
+                    </div>
+                  )}
+              </div>
+
+            </div>
+            
+          </div>
 
 
       </SwiperSlide>
