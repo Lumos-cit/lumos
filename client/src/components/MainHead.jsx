@@ -26,6 +26,10 @@ function MainHead() {
       });
   }
 
+  function NavToArticles(){
+    axios.get
+  }
+
   useEffect(() => {
     fetchCards();
   }, []);
@@ -43,7 +47,7 @@ function MainHead() {
       onSlideChange={() => console.log('slide change')}
 
   >
-    {cardscards.map((card) => (
+    {cards && cards.map((card) => (
       <SwiperSlide key={card.article_id} className="article-card ">
           <div className="flex w-full h-[25rem] justify-between">
       <div className="flex bg-black text-white w-1/3 p-4">
@@ -54,7 +58,7 @@ function MainHead() {
           <h2 className="font-bold text-3xl text-yellow-400">{card.title}</h2>
           <p className="font-semibold text-2xl">{card.description}</p>
         </div>
-        <div className="font-italic text-xl overflow-y-scroll max-h-[10rem] scrollbar-thin scrollbar-thumb-transparent scrollbar-track-transparent">
+        <div className="font-italic text-xl max-h-[10rem] scrollbar-thin scrollbar-thumb-transparent scrollbar-track-transparent">
           <p className="scroll-content">
           {showFullContent
       ? JSON.parse(card.content).blocks.map(block => {
@@ -76,12 +80,12 @@ function MainHead() {
           </p>
         </div>
         {!showFullContent && (
-          <button
+          <p
             className="text-yellow-500 mt-2 cursor-pointer bottom-10"
             onClick={() => setShowFullContent(true)}
           >
             Continue Reading......
-          </button>
+          </p>
         )}
       </div>
     </div>
