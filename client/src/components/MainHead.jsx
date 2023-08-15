@@ -4,6 +4,9 @@ import SectionHead from "../Components/SectionHead";
 import SectionFlex from "../Components/SectionFlex";
 import { Navigation, Pagination, Scrollbar, A11y,Autoplay  } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import './MainHead.css'
+import 'swiper/css/scrollbar';
+
 
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -34,13 +37,13 @@ function MainHead() {
       spaceBetween={50}
       slidesPerView={1}
       navigation
-      autoplay
       pagination={{ clickable: true }}
       scrollbar={{ draggable: true }}
       onSwiper={(swiper) => console.log(swiper)}
       onSlideChange={() => console.log('slide change')}
+
   >
-    {cards.map((card) => (
+    {cardscards.map((card) => (
       <SwiperSlide key={card.article_id} className="article-card ">
           <div className="flex w-full h-[25rem] justify-between">
       <div className="flex bg-black text-white w-1/3 p-4">
@@ -48,10 +51,10 @@ function MainHead() {
       </div>
       <div className="flex flex-col bg-black text-white w-2/3 p-4">
         <div>
-          <h2 className="font-bold text-3xl">{card.title}</h2>
+          <h2 className="font-bold text-3xl text-yellow-400">{card.title}</h2>
           <p className="font-semibold text-2xl">{card.description}</p>
         </div>
-        <div className="font-italic text-xl  overflow-y-auto max-h-[10rem]">
+        <div className="font-italic text-xl overflow-y-scroll max-h-[10rem] scrollbar-thin scrollbar-thumb-transparent scrollbar-track-transparent">
           <p className="scroll-content">
           {showFullContent
       ? JSON.parse(card.content).blocks.map(block => {
@@ -69,7 +72,7 @@ function MainHead() {
           }
           return null;
         })
-      : JSON.parse(card.content).blocks[0].data.text.slice(0, 50) + '...'}
+      : JSON.parse(card.content).blocks[0].data.text.substring(0, 50) + '...'}
           </p>
         </div>
         {!showFullContent && (
