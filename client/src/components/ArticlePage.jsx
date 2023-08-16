@@ -20,28 +20,28 @@ import ArticlePoster from "/Assets/Images/ArticlePoster.svg";
 import Editor from "./Editor";
 
 function ArticlePage({ data, author }) {
-  const [coverImage, setCoverImg] = useState("");
-  useEffect(() => {
-    if (data) {
-      // Original URL
-      const originalUrl = data.cover_img;
+  // const [coverImage, setCoverImg] = useState("");
+  // useEffect(() => {
+  //   if (data) {
+  //     // Original URL
+  //     const originalUrl = data.cover_img;
 
-      // Extract the image_id from the URL
-      const match = originalUrl.match(/\/d\/([^/]+)/);
-      const imageId = match ? match[1] : null;
+  //     // Extract the image_id from the URL
+  //     const match = originalUrl.match(/\/d\/([^/]+)/);
+  //     const imageId = match ? match[1] : null;
 
-      if (imageId) {
-        // Construct the new URL
-        const newUrl = `https://drive.google.com/uc?export=view&id=${imageId}`;
+  //     if (imageId) {
+  //       // Construct the new URL
+  //       const newUrl = `https://drive.google.com/uc?export=view&id=${imageId}`;
 
-        console.log(newUrl); // This will print the transformed URL
-        setCoverImg(newUrl);
-      } else {
-        console.log("Invalid URL format");
-        setCoverImg(data.cover_img);
-      }
-    }
-  }, []);
+  //       console.log(newUrl); // This will print the transformed URL
+  //       setCoverImg(newUrl);
+  //     } else {
+  //       console.log("Invalid URL format");
+  //       setCoverImg(data.cover_img);
+  //     }
+  //   }
+  // }, []);
 
   return (
     <section className="h-full bg-black">
@@ -114,7 +114,7 @@ function ArticlePage({ data, author }) {
         </div>
         <div className="basis-[40%] ">
           <div className="flex justify-center">
-            <img src={data && coverImage} className="p-10" />
+            <img src={data && data.cover_img} className="p-10" />
           </div>
           <div className="flex justify-center items-center">
             <button className="btn border rounded-full btn-sm mx-[1%] text-white">
