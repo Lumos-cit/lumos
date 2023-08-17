@@ -11,6 +11,7 @@ import News from "./pages/News";
 import SpotLight from "./pages/SpotLight";
 import StudentHQ from "./pages/StudentHQ";
 import Xplore from "./pages/Xplore";
+import News1 from "./components/News";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path="spotlight" element={<SpotLight />} />
         <Route path="studenthq" element={<StudentHQ />} />
         <Route path="xplore" element={<Xplore />} />
+        <Route path="new" element={<News1/>}/>
       </Routes>
       <Footer />
     </BrowserRouter>
