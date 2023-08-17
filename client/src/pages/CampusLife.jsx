@@ -48,12 +48,12 @@ function CampusLife() {
   
   
     return (
-      <div>
-      <SectionHead head={head} body={body} />
-      <div className="">
-        <SectionFlex images={Image1} buttons={Button1} articles={campusLife} />
+     <div>
+        <SectionHead head={head} body={body} />
+        <div className="">
+          <SectionFlex images={Image1} buttons={Button1} articles={campusLife} />
+        </div >
       </div>
-    </div>
   )
 }
 

@@ -1,5 +1,12 @@
 /* eslint-disable react/no-unescaped-entities */
+<<<<<<< HEAD
+import React from "react";
+import { Link } from "react-router-dom";
+
+import { useState, useEffect } from "react";
+=======
 import React, { useEffect, useState } from "react";
+>>>>>>> b6d6fc41fe86d406044d89deed61d136fcc09641
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
@@ -19,6 +26,10 @@ import RelatedImage from "/Assets/Images/RelatedImage.svg";
 import ArticlePoster from "/Assets/Images/ArticlePoster.svg";
 import Editor from "./Editor";
 
+<<<<<<< HEAD
+function ArticlePage({ data, author, relatedArticles }) {
+  // const router = useNavigate();
+=======
 function ArticlePage({ data, author }) {
   // const [coverImage, setCoverImg] = useState("");
   // useEffect(() => {
@@ -43,9 +54,10 @@ function ArticlePage({ data, author }) {
   //   }
   // }, []);
 
+>>>>>>> b6d6fc41fe86d406044d89deed61d136fcc09641
   return (
     <section className="h-full bg-black">
-      <div className="flex flex-col lg:flex-row w-11/12 mx-auto gap-16">
+      <div className="flex flex-col lg:flex-row w-11/12 mx-auto gap-8">
         <div className="basis-[60%] mt-[3%]">
           <h1 className="poppins-bold text-xl text-white">29, March 2023</h1>
 
@@ -129,9 +141,40 @@ function ArticlePage({ data, author }) {
           </div>
           <br />
           <hr />
-          <div className="px-2 lg:px-20 mt-[3%]">
+          <div className="px-2 mt-[3%]">
             <h1 className="poppins-bold text-3xl text-white">Related</h1>
-            <div className="border border-solid border-white ">
+            {relatedArticles.map((relatedArticle, index) => {
+              return (
+                <div
+                  className="border border-solid w-full border-white "
+                  key={index}
+                >
+                  <div className="flex gap-5 p-2">
+                    <div className="basis-[70%] mt-[3%] h-auto lg:h-[16vh] flex flex-col justify-between p-1">
+                      <div>
+                        <p className="text-white font-bold text-justify leading-5">
+                          {relatedArticle.title}
+                        </p>
+                      </div>
+                      <div className="flex flex-col lg:flex-col gap-5 justify-between">
+                        <p className="text-white">
+                          {relatedArticle.createdAt.substring(0, 10)}
+                        </p>
+                        <p className="underline text-blue-500">
+                          <Link to={"/article/" + relatedArticle.article_id}>
+                            Click Here ˃˃
+                          </Link>
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex justify-center items-center ">
+                      <img src={relatedArticle.cover_img} className="" />
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+            {/* <div className="border border-solid border-white ">
               <div className="flex gap-5 p-2">
                 <div className="basis-[70%] mt-[3%] h-[54vh] lg:h-[16vh] flex flex-col justify-between p-1">
                   <div>
@@ -184,15 +227,15 @@ function ArticlePage({ data, author }) {
                   <img src={RelatedImage} />
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
 
           <br />
           <hr />
 
-          <div className="px-20">
+          <div className="px-20 py-10 flex flex-col justify-center items-center">
             <h1 className="poppins-bold text-3xl mt-[3%] text-white">Share</h1>
-            <div className="flex mt-[3%]">
+            <div className="flex mt-[3%] gap-7">
               <FontAwesomeIcon
                 icon={faFacebook}
                 size="2x"

@@ -1,86 +1,175 @@
-import React from "react";
-import bg from "/Assets/Images/Background.svg";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import SectionHead from "../Components/SectionHead";
+import SectionFlex from "../Components/SectionFlex";
+import {
+  Navigation,
+  Pagination,
+  Scrollbar,
+  A11y,
+  Autoplay,
+} from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "./MainHead.css";
+import "swiper/css/scrollbar";
+import { Link } from "react-router-dom";
+
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
 
 function MainHead() {
+  const [cards, setCards] = useState([]);
+  const [showFullContent, setShowFullContent] = useState(false);
+
+  function fetchCards() {
+    axios
+      .get(import.meta.env.VITE_BACKEND_URL + `/api/articles`)
+      .then((res) => {
+        console.log(res.data.data);
+        setCards(res.data.data);
+      });
+  }
+
+  useEffect(() => {
+    fetchCards();
+  }, []);
+
+  console.log({ cards });
   return (
     <>
-      <div className="bg-cover bg-main-lg bg-no-repeat h-full hidden lg:block">
-        <div className="flex items-center p-10 gap-40 ">
-          <div className="basis-1/3">
-            <img src={bg} className="h-[400px] w-[400px]" />
-          </div>
-          <div className="basis-1/2">
-            <div className="flex flex-col gap-4">
-              <div className="flex gap-4">
-                <button className="btn btn-outline btn-warning btn-sm  poppins-medium">
-                  Feb 19 2023
-                </button>
-                <button className="btn btn-outline btn-warning btn-sm  poppins-medium">
-                  Spring Edition
-                </button>
-                <button className="btn btn-outline btn-warning btn-sm  poppins-medium">
-                  Student HQ
-                </button>
-              </div>
-              <div>
-                <h1 className="text-6xl text-start poppins-medium text-white">
-                  <span>The Five Most Critical </span>
-                  <span className="text-[#FFC600]">Financial Pitfalls </span>to
-                  Avoid
-                </h1>
-              </div>
-              <div className="poppins-regular text-white">
-                This article dives into the common money traps that many college
-                students fall into, and offers practical advice on how to avoid
-                them. From overspending to getting caught up in credit card
-                offers and Crypto scams, we’ll show you how to make wise
-                financial choices that will set you up for success during and
-                after college.
-              </div>
-              <span className="text-end decoration-[#FFC600] underline text-[#FFC600] poppins-light">
-                continue reading
-              </span>
-            </div>
-          </div>
-        </div>
+      <div className="hidden lg:block">
+        <Swiper
+          modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
+          spaceBetween={50}
+          slidesPerView={1}
+          navigation
+          pagination={{ clickable: true }}
+          scrollbar={{ draggable: true }}
+          onSwiper={(swiper) => console.log(swiper)}
+          onSlideChange={() => console.log("slide change")}
+        >
+          {cards &&
+            cards.map((card) => (
+              <SwiperSlide
+                key={card.article_id}
+                className="article-card bg-black "
+              >
+                <div className=" bg-black w-full  ">
+                  <div className="flex w-[80%] h-[25rem] justify-between mx-auto">
+                    <div className="flex items-start text-white lg:w-1/3 lg:p-4 md:w-1/3 ">
+                      <img
+                        src={card.cover_img}
+                        alt="Article Cover"
+                        className="h-full w-full"
+                      />
+                    </div>
+                    <div className="flex flex-col gap-5 bg-black text-white w-2/3 ">
+                      <div className="">
+                        <h2 className="font-bold text-3xl text-yellow-400 uppercase lg:mt-[1rem]">
+                          {card.title}
+                        </h2>
+                        <p className="font-semibold text-2xl">
+                          {card.description}
+                        </p>
+                      </div>
+                      <div className="font-italic text-xl max-h-[10rem] scrollbar-thin scrollbar-thumb-transparent scrollbar-track-transparent">
+                        <p className="scroll-content">
+                          {card.content.substring(0, 100)}
+                          <Link
+                            to={`/article/${card.article_id}`}
+                            className="text-yellow-500"
+                          >
+                            Continue Reading......
+                          </Link>
+                          {/* {showFullContent
+                              ? JSON.parse(card.content).blocks.map((block) => {
+                                  if (block.type === "paragraph") {
+                                    return <p>{block.data.text}</p>;
+                                  }
+                                  if (block.type === "list") {
+                                    return (
+                                      <ul>
+                                        {block.data.items.map((item) => (
+                                          <li>{item}</li>
+                                        ))}
+                                      </ul>
+                                    );
+                                  }
+                                  return null;
+                                })
+                              : JSON.parse(
+                                  card.content
+                              ).blocks[0].data.text.substring(0, 50) + "..."
+                            } */}
+                        </p>
+                      </div>
+                      {/* {!showFullContent && (
+                          <div className="text-yellow-500 mt-2 cursor-pointer bottom-10">
+                            <Link
+                              to={`/article/${card.article_id}`}
+                              className="text-yellow-500"
+                            >
+                              Continue Reading......
+                            </Link>
+                          </div>
+                        )} */}
+                    </div>
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+        </Swiper>
       </div>
 
-      <div className="bg-cover bg-main-lg bg-no-repeat h-full block md:hidden">
-        <div className="flex items-center gap-2 p-2 ">
-          <div className="basis-[70%]">
-            <img src={bg} className="h-[400px] w-[400px] " />
-          </div>
-          <div className="basis-[30%]">
-            <button className="btn btn-outline btn-warning btn-sm  poppins-regular my-2 mx-2 ">
-              Feb 19 2023
-            </button>
-            <button className="btn btn-outline btn-warning btn-sm  poppins-regular my-2 mx-2 ">
-              Spring Edition
-            </button>
-            <button className="btn btn-outline btn-warning btn-sm  poppins-regular my-2 mx-2 ">
-              Student HQ
-            </button>
-          </div>
-        </div>
-
-        <div className="p-5">
-          <h1 className="text-3xl text-start poppins-medium text-white">
-            <span>The Five Most Critical </span>
-            <span className="text-[#FFC600]">Financial Pitfalls </span>to Avoid
-          </h1>
-        </div>
-        <div className="poppins-regular text-white p-5">
-          This article dives into the common money traps that many college
-          students fall into, and offers practical advice on how to avoid them.
-          From overspending to getting caught up in credit card offers and
-          Crypto scams, we’ll show you how to make wise financial choices that
-          will set you up for success during and after college.
-        </div>
-        <div className=" pl-5 pb-10">
-          <span className=" decoration-[#FFC600] underline text-[#FFC600] poppins-light">
-            continue reading
-          </span>
-        </div>
+      <div className="block md:hidden">
+        <Swiper
+          modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
+          spaceBetween={50}
+          slidesPerView={1}
+          navigation
+          pagination={{ clickable: true }}
+          scrollbar={{ draggable: true }}
+          onSwiper={(swiper) => console.log(swiper)}
+          onSlideChange={() => console.log("slide change")}
+        >
+          {cards &&
+            cards.map((card) => (
+              <SwiperSlide
+                key={card.article_id}
+                className="article-card bg-black "
+              >
+                <div className="bg-black w-full">
+                  <div className="flex w-[80%] h-[20vh] justify-between flex-row mx-auto">
+                    <div className="w-full">
+                      <p className="text-yellow-500 font-bold text-2xl">
+                        {card.title}
+                      </p>
+                      <p className="font-semibold text-xl text-white">
+                        {card.description}
+                      </p>
+                      <p className="scroll-content font-italic text-sm text-white ">
+                        {card.content.substring(0, 40)}
+                        <Link
+                          to={`/article/${card.article_id}`}
+                          className="text-yellow-500 ml-[1rem]"
+                        >
+                          Continue Reading......
+                        </Link>
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex w-[20%] h-[20%] justify-center mx-auto mt-[2rem]">
+                    <img
+                      src={card.cover_img}
+                      alt="Article Cover"
+                      className="h-[50%] w-full mb-10"
+                    />
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+        </Swiper>
       </div>
     </>
   );
