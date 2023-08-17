@@ -49,7 +49,7 @@ function Articles() {
     let tempSet = new Set();
     while (tempSet.size < 6) {
       // 8 should be changed to 48
-      let value = Math.floor(Math.random() * 8 + 1);
+      let value = Math.floor(Math.random() * 2 + 1);
       tempSet.add(value);
     }
     return [...tempSet];

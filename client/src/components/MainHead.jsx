@@ -145,7 +145,7 @@ function MainHead() {
                       <p className="text-yellow-500 font-bold text-2xl">
                         {card.title}
                       </p>
-                      <p className="font-semibold text-xl font-semibold text-white">
+                      <p className="font-semibold text-xl text-white">
                         {card.description}
                       </p>
                       <p className="scroll-content font-italic text-sm text-white ">

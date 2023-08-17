@@ -1,8 +1,12 @@
 /* eslint-disable react/no-unescaped-entities */
+<<<<<<< HEAD
 import React from "react";
 import { Link } from "react-router-dom";
 
 import { useState, useEffect } from "react";
+=======
+import React, { useEffect, useState } from "react";
+>>>>>>> b6d6fc41fe86d406044d89deed61d136fcc09641
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
@@ -22,8 +26,35 @@ import RelatedImage from "/Assets/Images/RelatedImage.svg";
 import ArticlePoster from "/Assets/Images/ArticlePoster.svg";
 import Editor from "./Editor";
 
+<<<<<<< HEAD
 function ArticlePage({ data, author, relatedArticles }) {
   // const router = useNavigate();
+=======
+function ArticlePage({ data, author }) {
+  // const [coverImage, setCoverImg] = useState("");
+  // useEffect(() => {
+  //   if (data) {
+  //     // Original URL
+  //     const originalUrl = data.cover_img;
+
+  //     // Extract the image_id from the URL
+  //     const match = originalUrl.match(/\/d\/([^/]+)/);
+  //     const imageId = match ? match[1] : null;
+
+  //     if (imageId) {
+  //       // Construct the new URL
+  //       const newUrl = `https://drive.google.com/uc?export=view&id=${imageId}`;
+
+  //       console.log(newUrl); // This will print the transformed URL
+  //       setCoverImg(newUrl);
+  //     } else {
+  //       console.log("Invalid URL format");
+  //       setCoverImg(data.cover_img);
+  //     }
+  //   }
+  // }, []);
+
+>>>>>>> b6d6fc41fe86d406044d89deed61d136fcc09641
   return (
     <section className="h-full bg-black">
       <div className="flex flex-col lg:flex-row w-11/12 mx-auto gap-8">
